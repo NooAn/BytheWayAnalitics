@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -34,6 +35,7 @@ public class FragmentLastActivityUsers extends Fragment {
     DatePickerDialog.OnDateSetListener mDateListner;
     ListView listView;
     Calendar calendar;
+    FloatingActionButton buttonSentMail;
 
     public FragmentLastActivityUsers() {
         // Required empty public constructor
@@ -86,14 +88,20 @@ public class FragmentLastActivityUsers extends Fragment {
                     }
                 };
 
-/*        FloatingActionButton buttonSentMail = (FloatingActionButton) viewFragmentLastDate.findViewById(R.id.fab);
+        buttonSentMail = (FloatingActionButton) viewFragmentLastDate.findViewById(R.id.fab2);
         buttonSentMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Subject of email");
+                intent.putExtra(Intent.EXTRA_TEXT, "Body of email");
+                intent.setData(Uri.parse("mailto:default@recipient.com")); // or just "mailto:" for blank
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
+                startActivity(intent);
 
             }
-        });*/
+        });
 
 
         return viewFragmentLastDate;
