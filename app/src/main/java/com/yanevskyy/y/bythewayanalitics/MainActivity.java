@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,6 +144,8 @@ public class MainActivity extends AppCompatActivity
             for (Map.Entry<String, Object> map : documentSnapshot.getData().entrySet()) {
                 String field = map.getKey();
                 switch (field) {
+                    //Fixme   user = document.toObject(User::class.java)
+
                     case "addInformation": user.setAddInformation(documentSnapshot.getString(field)); break;
                     case "age": user.setAge(documentSnapshot.getLong(field).intValue()); break;
                     case "budget": user.setBudget(documentSnapshot.getLong(field)); break;

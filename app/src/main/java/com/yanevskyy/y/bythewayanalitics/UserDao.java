@@ -24,6 +24,4 @@ public class UserDao implements Serializable {
         return users;
     }
 
-
-
 }
