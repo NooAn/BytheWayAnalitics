@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ListView;
@@ -34,6 +35,8 @@ public class FragmentLastActivityUsers extends Fragment {
     ListView listView;
     Calendar calendar;
     FloatingActionButton buttonSentMail;
+    ArrayAdapter<String> adapter;
+    List<String> items = new ArrayList<>();
 
     public FragmentLastActivityUsers() {
         // Required empty public constructor
@@ -66,7 +69,6 @@ public class FragmentLastActivityUsers extends Fragment {
                         year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
-
             }
         });
 
@@ -80,9 +82,20 @@ public class FragmentLastActivityUsers extends Fragment {
                 Calendar calendar1 = Calendar.getInstance();
                 calendar1.set(year, month - 1, dayOfMonth);
                 timeLastActivityUser = calendar1.getTime().getTime();
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
-                        android.R.layout.simple_list_item_1, getActiveUsers());
+                items = getActiveUsers();
+                adapter = new ArrayAdapter<String>(context,
+                        android.R.layout.simple_list_item_1, items);
                 listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String item = items.get(position);
+                        items.remove(item);
+                        adapter = new ArrayAdapter<String>(context,
+                                android.R.layout.simple_list_item_1, items);
+                        listView.setAdapter(adapter);
+                    }
+                });
 
             }
         };
