@@ -399,6 +399,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "51228349143-50bqdmdrq52dvu1vqktkv4dfddbttd5g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yanevskyy.y.bythewayanalitics",
+            "certificate_hash": "685fd4c4fee7b87eae876f3d06ce7175e78b7914"
+          }
+        },
+        {
           "client_id": "51228349143-pfelm63smi0pgk00i6k45os0rc7o16c2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -37,6 +37,7 @@ public class FragmentLastActivityUsers extends Fragment {
     FloatingActionButton buttonSentMail;
     ArrayAdapter<String> adapter;
     List<String> items = new ArrayList<>();
+    List<String> emails = new ArrayList<>();
 
     public FragmentLastActivityUsers() {
         // Required empty public constructor
@@ -106,7 +107,7 @@ public class FragmentLastActivityUsers extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("message/rfc822");
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Subject of email");
+                intent.putExtra(Intent.EXTRA_SUBJECT, emails.toArray());
                 intent.putExtra(Intent.EXTRA_TEXT, "Body of email");
              //   intent.setData(Uri.parse("mailto:default@recipient.com")); // or just "mailto:" for blank
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
@@ -130,6 +131,7 @@ public class FragmentLastActivityUsers extends Fragment {
                 String name = user.getName();
                 String lastName = user.getLastName();
                 String email = user.getEmail();
+                emails.add(email);
                 if (!email.isEmpty() && !email.equalsIgnoreCase("null")) {
                     userNames.add(name + " " + lastName + " : " + email);
                 }
