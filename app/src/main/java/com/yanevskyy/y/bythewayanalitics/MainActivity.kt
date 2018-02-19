@@ -31,12 +31,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-//        val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
         nav_view.setNavigationItemSelectedListener(this)
 
         users = HashSet()
@@ -45,14 +43,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 for (document in task.result) {
                     Log.d(TAG, document.id + " => " + document.data)
                     document.reference.get().addOnSuccessListener { documentSnapshot -> users.add(fillUserDao(documentSnapshot)) }
-
                 }
             } else {
                 Log.w(TAG, "Error getting documents.", task.exception)
             }
             userDao = UserDao(users)
         }
-
         lastActivityUsers = FragmentLastActivityUsers()
     }
 
@@ -121,8 +117,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     "sex" -> user.sex = documentSnapshot.getLong("sex")!!.toInt()
                     "socialNetwork" -> user.socialNetwork = documentSnapshot.get("socialNetwork") as HashMap<String, String>
                     "urlPhoto" -> user.urlPhoto = documentSnapshot.getString("urlPhoto")
-                    else -> {
-                    }
                 }
             }
         }
