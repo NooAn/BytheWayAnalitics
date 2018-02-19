@@ -16,7 +16,7 @@ import java.util.Collection;
 public class UserDao implements Serializable {
     private Collection<User> users;
 
-    public UserDao(Collection<User> users) {
+    public UserDao(Collection<User> users ) {
         this.users = users;
     }
 

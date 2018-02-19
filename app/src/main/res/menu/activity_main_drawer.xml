@@ -35,6 +35,9 @@
         <item
             android:id="@+id/budget_statistic"
             android:title="Budget statistic" />
+        <item
+            android:id="@+id/parser_email"
+            android:title="Email Parse" />
     </group>
 
 

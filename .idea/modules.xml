@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BytheWayAnalitics.iml" filepath="$PROJECT_DIR$/BytheWayAnalitics.iml" />
+      <module fileurl="file://C:\Users\Andrei_Gusenkov\Documents\BytheWayAnalitics\BytheWayAnalitics.iml" filepath="C:\Users\Andrei_Gusenkov\Documents\BytheWayAnalitics\BytheWayAnalitics.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
