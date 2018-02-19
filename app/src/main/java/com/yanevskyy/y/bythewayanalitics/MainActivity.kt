@@ -16,9 +16,11 @@ import com.firebase.mm.myapplication.User
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.yanevskyy.y.bythewayanalitics.fragment.FragmentLastActivityUsers
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import java.util.*
 
-class MainActivity() : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     lateinit var lastActivityUsers: FragmentLastActivityUsers
     lateinit var userDao: UserDao
     private lateinit var users: MutableCollection<User>
@@ -27,27 +29,15 @@ class MainActivity() : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-
-        val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
+//        val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         val toggle = ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer.addDrawerListener(toggle)
+                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        val navigationView = findViewById<NavigationView>(R.id.nav_view)
-        navigationView.setNavigationItemSelectedListener(this)
-
+        nav_view.setNavigationItemSelectedListener(this)
 
         users = HashSet()
         db.collection("users").get().addOnCompleteListener { task ->
@@ -63,27 +53,20 @@ class MainActivity() : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             userDao = UserDao(users)
         }
 
-
         lastActivityUsers = FragmentLastActivityUsers()
     }
 
     override fun onBackPressed() {
-        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START)
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
         }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
         val transaction = supportFragmentManager.beginTransaction()
-
-        val id = item.itemId
-
-
-        when (id) {
+        when (item.itemId) {
             R.id.last_activity_date -> {
                 val bundle = Bundle()
                 bundle.putSerializable(USERS_DAO, userDao)
@@ -103,9 +86,7 @@ class MainActivity() : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 //todo
             }
         }
-
-        val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
-        drawer.closeDrawer(GravityCompat.START)
+        drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
 
@@ -115,7 +96,6 @@ class MainActivity() : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             for ((field) in documentSnapshot.data) {
                 when (field) {
                 //Fixme   user = document.toObject(User::class.java)
-
                     "addInformation" -> user.addInformation = documentSnapshot.getString(field)
                     "age" -> user.age = documentSnapshot.getLong(field)!!.toInt()
                     "budget" -> user.budget = documentSnapshot.getLong(field)
@@ -150,8 +130,7 @@ class MainActivity() : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }
 
     companion object {
-
-        val LAST_ACTIVITY = "LAST_ACTIVITY"
-        val USERS_DAO = "USERS_DAO"
+        const val LAST_ACTIVITY = "LAST_ACTIVITY"
+        const val USERS_DAO = "USERS_DAO"
     }
 }
