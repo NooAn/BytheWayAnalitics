@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.yanevskyy.y.bythewayanalitics.MainActivity
 import com.yanevskyy.y.bythewayanalitics.R
 import com.yanevskyy.y.bythewayanalitics.UserDao
 import kotlinx.android.synthetic.main.fragment_last_activity_users.*
@@ -30,9 +31,9 @@ class FragmentLastActivityUsers : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
             inflater.inflate(R.layout.fragment_last_activity_users, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        userDao = arguments.getSerializable("USERS_DAO") as UserDao
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        userDao = (activity as MainActivity).userDao//arguments.getSerializable("USERS_DAO") as UserDao
 
         mDateListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
             textDateActive.text = StringBuilder(dayOfMonth.toString()).append("/").append(month + 1).append("/").append(year)

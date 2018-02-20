@@ -42,6 +42,4 @@
         android:visibility="visible"
         app:srcCompat="@android:drawable/ic_dialog_email"/>
 
-
-
 </FrameLayout>

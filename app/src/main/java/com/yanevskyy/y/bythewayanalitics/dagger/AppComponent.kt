@@ -11,7 +11,6 @@ import javax.inject.Singleton
 @Component(modules = [(AppModule::class)])
 
 interface AppComponent {
-    fun inject(activity: MainActivity)
     fun inject(activity: BudgetFragment)
     fun inject(activity: FragmentLastActivityUsers)
 }

@@ -5,23 +5,21 @@ import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import com.firebase.mm.myapplication.User
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.yanevskyy.y.bythewayanalitics.fragment.BudgetFragment
 import com.yanevskyy.y.bythewayanalitics.fragment.FragmentLastActivityUsers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    lateinit var lastActivityUsers: FragmentLastActivityUsers
+    private lateinit var lastActivityUsers: FragmentLastActivityUsers
     lateinit var userDao: UserDao
     private lateinit var users: MutableCollection<User>
     private var db = FirebaseFirestore.getInstance()
@@ -79,7 +77,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.social_network -> {
             }
             R.id.with_out_travel -> {
-                //todo
+            }
+            R.id.budget_statistic -> {
+                transaction.replace(R.id.container, BudgetFragment(), LAST_ACTIVITY).addToBackStack(LAST_ACTIVITY).commit()
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
