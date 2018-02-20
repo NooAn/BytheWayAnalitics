@@ -75,6 +75,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             userDao = UserDao(users)
         }
+        val fragment = FragmentParseEmails()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container, fragment, LAST_ACTIVITY).addToBackStack(LAST_ACTIVITY).commit()
     }
 
     override fun onBackPressed() {
