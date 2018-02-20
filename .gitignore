@@ -1,1 +1,14 @@
 
+build/
+.idea/libraries/org_reactivestreams_reactive_streams_1_0_0_jar.xml
+.idea/libraries/io_reactivex_rxjava2_rxjava_2_1_2_jar.xml
+.idea/libraries/com_squareup_retrofit2_retrofit_2_3_0_jar.xml
+.idea/libraries/com_squareup_retrofit2_adapter_rxjava2_2_3_0_jar.xml
+.idea/libraries/com_squareup_okhttp3_okhttp_3_8_0_jar.xml
+.idea/libraries/com_squareup_okhttp3_logging_interceptor_3_8_0_jar.xml
+.idea/workspace.xml
+.idea/libraries/io_reactivex_rxjava2_rxkotlin_2_0_3_jar.xml
+.idea/libraries/io_reactivex_rxjava2_rxandroid_2_0_1.xml
+.idea/libraries/com_squareup_retrofit2_converter_gson_2_3_0_jar.xml
+.idea/libraries/com_squareup_okio_okio_1_13_0_jar.xml
+.idea/libraries/com_google_code_gson_gson_2_7_jar.xml
