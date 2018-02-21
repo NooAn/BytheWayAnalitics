@@ -36,7 +36,7 @@ public class FragmentLastActivityUsers extends Fragment {
     Calendar calendar;
     FloatingActionButton buttonSentMail;
     ArrayAdapter<String> adapter;
-    List<String> items = new ArrayList<>();
+    List<String> listActiveUsers = new ArrayList<>();
     List<String> emails = new ArrayList<>();
 
     public FragmentLastActivityUsers() {
@@ -44,6 +44,7 @@ public class FragmentLastActivityUsers extends Fragment {
     }
 
     Context context;
+    TextView textCount;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,7 +56,7 @@ public class FragmentLastActivityUsers extends Fragment {
         context = getContext();
 
         listView = view.findViewById(R.id.userList);
-
+        textCount = view.findViewById(R.id.value_count_users);
         mDisplayDate = view.findViewById(R.id.textDateActive);
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,17 +84,18 @@ public class FragmentLastActivityUsers extends Fragment {
                 Calendar calendar1 = Calendar.getInstance();
                 calendar1.set(year, month - 1, dayOfMonth);
                 timeLastActivityUser = calendar1.getTime().getTime();
-                items = getActiveUsers();
+                listActiveUsers = getActiveUsers();
+                textCount.setText((String.valueOf(listActiveUsers.size())));
                 adapter = new ArrayAdapter<String>(context,
-                        android.R.layout.simple_list_item_1, items);
+                        android.R.layout.simple_list_item_1, listActiveUsers);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String item = items.get(position);
-                        items.remove(item);
+                        String item = listActiveUsers.get(position);
+                        listActiveUsers.remove(item);
                         adapter = new ArrayAdapter<String>(context,
-                                android.R.layout.simple_list_item_1, items);
+                                android.R.layout.simple_list_item_1, listActiveUsers);
                         listView.setAdapter(adapter);
                     }
                 });
@@ -109,7 +111,7 @@ public class FragmentLastActivityUsers extends Fragment {
                 intent.setType("message/rfc822");
                 intent.putExtra(Intent.EXTRA_SUBJECT, emails.toArray());
                 intent.putExtra(Intent.EXTRA_TEXT, "Body of email");
-             //   intent.setData(Uri.parse("mailto:default@recipient.com")); // or just "mailto:" for blank
+                //   intent.setData(Uri.parse("mailto:default@recipient.com")); // or just "mailto:" for blank
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
                 startActivity(intent);
             }
