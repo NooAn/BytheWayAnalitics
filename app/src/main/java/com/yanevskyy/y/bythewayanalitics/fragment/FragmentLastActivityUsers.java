@@ -85,7 +85,9 @@ public class FragmentLastActivityUsers extends Fragment {
                 calendar1.set(year, month - 1, dayOfMonth);
                 timeLastActivityUser = calendar1.getTime().getTime();
                 listActiveUsers = getActiveUsers();
+
                 textCount.setText((String.valueOf(listActiveUsers.size())));
+
                 adapter = new ArrayAdapter<String>(context,
                         android.R.layout.simple_list_item_1, listActiveUsers);
                 listView.setAdapter(adapter);

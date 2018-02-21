@@ -9,6 +9,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.yanevskyy.y.bythewayanalitics"
+//        applicationId "ru.a1024bits.bytheway.release"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
