@@ -35,6 +35,7 @@ import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import java.io.File
 import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.CopyOnWriteArrayList
@@ -56,14 +57,8 @@ class FragmentParseEmails : Fragment() {
             sendRequest()
         }
         view?.findViewById<Button>(R.id.button2)?.setOnClickListener {
-            var text = ""
-            list.forEach {
-                text += it + ", "
-            }
-            Log.e("LOG", text)
-            val sh = context.getSharedPreferences("KOT", Context.MODE_WORLD_WRITEABLE)
-            sh.edit().putStringSet("list", HashSet<String>(list)).apply()
-            Log.e("LOG", text)
+            var text = list.toString()
+            writteText(list)
             saveDataAndSend(text)
         }
         return view
@@ -73,8 +68,8 @@ class FragmentParseEmails : Fragment() {
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "message/rfc822"
 
-        intent.putExtra(Intent.EXTRA_SUBJECT, text)
-        intent.putExtra(Intent.EXTRA_TEXT, "Email from teamTravel")
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Email from travel")
+        intent.putExtra(Intent.EXTRA_TEXT, text)
         //   intent.setData(Uri.parse("mailto:default@recipient.com")); // or just "mailto:" for blank
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) // this will make such that when user returns to your app, your app is displayed, instead of the email app.
         startActivity(intent)
@@ -98,7 +93,7 @@ class FragmentParseEmails : Fragment() {
 
         var countTest = AtomicInteger(0)
 
-        runBlocking<Unit> {
+        runBlocking {
             List(21000) {
                 //val job =
                 async {
@@ -110,7 +105,7 @@ class FragmentParseEmails : Fragment() {
                     Log.e("LOG USER $it", user.toString())
                     if (user.InUser.IsAgent == "0" && user.InUser.is_manager == "0" && user.InUser.is_robot == "0" && user.InUser.is_test == "0") {
                         list.add(user.InUser.email)
-                        Log.d("LOG EMAIL $it", user.InUser.email)
+                        Log.d("LOG add email $it", user.InUser.email)
                     } else {
                         countTest.incrementAndGet()
                     }
@@ -119,15 +114,28 @@ class FragmentParseEmails : Fragment() {
                         count_emails_text.text = list.size.toString()
                     }
                 }
+
                 //job.join()
             }
             Log.d("LOG finnish 2:", Thread.currentThread().name + "s: ${list.size}")
-
 
         }
         Log.d("LOG finnish:", Thread.currentThread().name)
     }
 
+    fun writteText(list: List<String>) {
+        try {
+            val filename = "email ${list.size}.txt"
+            getContext().openFileOutput(filename, Context.MODE_PRIVATE).use {
+                list.forEach { list ->
+                    it.write(list.toByteArray())
+                    it.write(", ".toByteArray())
+                }
+            }
+        } catch (e: Exception) {
+            Log.e("LOGERROR", "EMAIL", e)
+        }
+    }
 
     suspend fun getUserId(id: Int): TeamUserData = service!!.getUser(id = id).await()
 }
