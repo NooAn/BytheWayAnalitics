@@ -2,30 +2,31 @@ package com.yanevskyy.y.bythewayanalitics.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import com.yanevskyy.y.bythewayanalitics.MainActivity
-
+import com.yanevskyy.y.bythewayanalitics.App
+import com.yanevskyy.y.bythewayanalitics.AppPresenter
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.UserDao
 import kotlinx.android.synthetic.main.fragment_budget.*
+import javax.inject.Inject
 
 class BudgetFragment : Fragment() {
-    lateinit var userDao: UserDao
+    @Inject
+    lateinit var presenter: AppPresenter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
-            inflater.inflate(R.layout.fragment_budget, container, false)!!
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+            inflater.inflate(R.layout.fragment_budget, container, false)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        App.INSTANCE.appComponent().inject(this)
         super.onActivityCreated(savedInstanceState)
-        userDao = (activity as MainActivity).userDao
 
         var totalBudget = 0L
         var maxBudget = Long.MIN_VALUE
         var minBudget = Long.MAX_VALUE
         var countUsers = 0
-        for (user in userDao.users) {
+        for (user in presenter.userDao.users) {
             if (user.cities.isEmpty()) continue
             countUsers++
             totalBudget += user.budget

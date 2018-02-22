@@ -12,16 +12,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import com.yanevskyy.y.bythewayanalitics.MainActivity
+import com.yanevskyy.y.bythewayanalitics.App
+import com.yanevskyy.y.bythewayanalitics.AppPresenter
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.UserDao
 import kotlinx.android.synthetic.main.fragment_last_activity_users.*
 import java.util.*
+import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 
 class FragmentLastActivityUsers : Fragment() {
-    lateinit var userDao: UserDao
+    @Inject
+    lateinit var presenter: AppPresenter
     private var timeLastActivityUser: Long = 0L
     private lateinit var mDateListener: DatePickerDialog.OnDateSetListener
     private lateinit var calendar: Calendar
@@ -32,8 +34,8 @@ class FragmentLastActivityUsers : Fragment() {
             inflater.inflate(R.layout.fragment_last_activity_users, container, false)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        App.INSTANCE.appComponent().inject(this)
         super.onActivityCreated(savedInstanceState)
-        userDao = (activity as MainActivity).userDao//arguments.getSerializable("USERS_DAO") as UserDao
 
         mDateListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
             textDateActive.text = StringBuilder(dayOfMonth.toString()).append("/").append(month + 1).append("/").append(year)
@@ -70,7 +72,7 @@ class FragmentLastActivityUsers : Fragment() {
 
     fun getActiveUsers(): MutableList<String> {
         val userNames = ArrayList<String>()
-        for (user in userDao.users) {
+        for (user in presenter.userDao.users) {
             val timestamp = user.data
             if (timestamp <= timeLastActivityUser) {
                 val name = user.name
@@ -85,4 +87,4 @@ class FragmentLastActivityUsers : Fragment() {
         }
         return userNames
     }
-}// Required empty public constructor
+}
