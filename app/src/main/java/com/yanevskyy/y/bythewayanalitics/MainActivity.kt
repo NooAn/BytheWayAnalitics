@@ -61,14 +61,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
         navigationView.setNavigationItemSelectedListener(this)
 
-
-
+//FIXME 
+/*
+                    store.collection(COLLECTION_USERS).get().addOnCompleteListener({ task ->
+                        if (task.isSuccessful) {
+                            val result: MutableList<User> = ArrayList()
+                            for (document in task.result) {
+                                Log.d(TAG, document.id + " => " + document.data)
+                                var user = User()
+                                    user = document.toObject(User::class.java)
+ */
         db.collection("users").get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 for (document in task.result) {
                     Log.d(TAG, document.id + " => " + document.data)
                     document.reference.get().addOnSuccessListener { documentSnapshot -> users.add(fillUserDao(documentSnapshot)) }
-
                 }
             } else {
                 Log.w(TAG, "Error getting documents.", task.exception)
