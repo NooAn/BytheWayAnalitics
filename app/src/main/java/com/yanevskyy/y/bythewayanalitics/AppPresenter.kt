@@ -1,5 +1,3 @@
 package com.yanevskyy.y.bythewayanalitics
 
-class AppPresenter(){
-    lateinit var userDao: UserDao
-}
+data class AppPresenter(var userDao: UserDao = UserDao())

@@ -12,6 +12,7 @@ android {
 //        applicationId "ru.a1024bits.bytheway.release"
         minSdkVersion 21
         targetSdkVersion 26
+        multiDexEnabled true //important
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -47,6 +48,7 @@ dependencies {
     compile 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:1.0.0'
     compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.2'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.22"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
     mavenCentral()

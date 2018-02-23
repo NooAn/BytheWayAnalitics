@@ -9,4 +9,4 @@ import com.firebase.mm.myapplication.User
 import java.io.Serializable
 import java.util.ArrayList
 
-class UserDao(val users: Collection<User> = ArrayList()) : Serializable
+class UserDao(var users: Collection<User> = ArrayList()) : Serializable

@@ -9,17 +9,14 @@ import com.yanevskyy.y.bythewayanalitics.App
 import com.yanevskyy.y.bythewayanalitics.AppPresenter
 import com.yanevskyy.y.bythewayanalitics.R
 import kotlinx.android.synthetic.main.fragment_budget.*
-import javax.inject.Inject
 
 class BudgetFragment : Fragment() {
-    @Inject
-    lateinit var presenter: AppPresenter
+    private var presenter: AppPresenter = App.INSTANCE.appPresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
             inflater.inflate(R.layout.fragment_budget, container, false)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        App.INSTANCE.appComponent().inject(this)
         super.onActivityCreated(savedInstanceState)
 
         var totalBudget = 0L

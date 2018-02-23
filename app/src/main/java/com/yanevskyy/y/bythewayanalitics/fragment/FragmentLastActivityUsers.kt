@@ -17,13 +17,11 @@ import com.yanevskyy.y.bythewayanalitics.AppPresenter
 import com.yanevskyy.y.bythewayanalitics.R
 import kotlinx.android.synthetic.main.fragment_last_activity_users.*
 import java.util.*
-import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 
 class FragmentLastActivityUsers : Fragment() {
-    @Inject
-    lateinit var presenter: AppPresenter
+    private var presenter: AppPresenter = App.INSTANCE.appPresenter
     private var timeLastActivityUser: Long = 0L
     private lateinit var mDateListener: DatePickerDialog.OnDateSetListener
     private lateinit var calendar: Calendar
@@ -34,10 +32,9 @@ class FragmentLastActivityUsers : Fragment() {
             inflater.inflate(R.layout.fragment_last_activity_users, container, false)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        App.INSTANCE.appComponent().inject(this)
         super.onActivityCreated(savedInstanceState)
 
-        mDateListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+        mDateListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             textDateActive.text = StringBuilder(dayOfMonth.toString()).append("/").append(month + 1).append("/").append(year)
 
             val calendar1 = Calendar.getInstance()
@@ -45,7 +42,7 @@ class FragmentLastActivityUsers : Fragment() {
             timeLastActivityUser = calendar1.time.time
             items = getActiveUsers()
             userList.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, items)
-            userList.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            userList.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
                 items.remove(items[position])
                 userList.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, items)
             }

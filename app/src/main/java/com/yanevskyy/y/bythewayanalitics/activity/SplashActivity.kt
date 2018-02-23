@@ -1,4 +1,4 @@
-package com.yanevskyy.y.bythewayanalitics
+package com.yanevskyy.y.bythewayanalitics.activity
 
 import android.content.ContentValues
 import android.content.Intent
@@ -8,15 +8,16 @@ import android.util.Log
 import com.firebase.mm.myapplication.User
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.yanevskyy.y.bythewayanalitics.App
+import com.yanevskyy.y.bythewayanalitics.AppPresenter
+import com.yanevskyy.y.bythewayanalitics.R
+import com.yanevskyy.y.bythewayanalitics.UserDao
 import java.util.*
-import javax.inject.Inject
 
 class SplashActivity : AppCompatActivity() {
-    @Inject
-    lateinit var presenter: AppPresenter
+    var presenter: AppPresenter = App.INSTANCE.appPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        App.INSTANCE.appComponent().inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
