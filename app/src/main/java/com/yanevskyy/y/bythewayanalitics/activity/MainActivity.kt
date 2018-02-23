@@ -9,10 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.fragment.BudgetFragment
-import com.yanevskyy.y.bythewayanalitics.fragment.FragmentCountActiveTrips
-import com.yanevskyy.y.bythewayanalitics.fragment.FragmentLastActivityUsers
-import com.yanevskyy.y.bythewayanalitics.fragment.FragmentParseEmails
+import com.yanevskyy.y.bythewayanalitics.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.security.InvalidKeyException
@@ -53,6 +50,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.active_trips -> {
                 FragmentCountActiveTrips()
+            }
+            R.id.only_phone_number -> {
+                FragmentOnlyPhoneNumber()
             }
             else -> {
                 throw InvalidKeyException()

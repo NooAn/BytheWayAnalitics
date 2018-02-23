@@ -36,6 +36,9 @@
             android:id="@+id/active_trips"
             android:title="@string/active_trips" />
         <item
+            android:id="@+id/only_phone_number"
+            android:title="@string/only_phone_number" />
+        <item
             android:id="@+id/parser_email"
             android:title="Email Parse" />
     </group>
