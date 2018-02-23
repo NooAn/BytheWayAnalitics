@@ -54,6 +54,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.only_phone_number -> {
                 FragmentOnlyPhoneNumber()
             }
+            R.id.contains_add_information -> {
+                FragmentAddInformation()
+            }
             else -> {
                 throw InvalidKeyException()
             }

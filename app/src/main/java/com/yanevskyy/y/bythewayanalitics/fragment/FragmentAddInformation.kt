@@ -11,25 +11,25 @@ import com.yanevskyy.y.bythewayanalitics.R
 import kotlinx.android.synthetic.main.fragment_add_info.*
 import kotlinx.android.synthetic.main.fragment_only_phone_number.*
 
-class FragmentOnlyPhoneNumber : Fragment() {
+class FragmentAddInformation : Fragment() {
     private var presenter: AppPresenter = App.INSTANCE.appPresenter
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-            inflater.inflate(R.layout.fragment_only_phone_number, container, false)
+            inflater.inflate(R.layout.fragment_add_info, container, false)
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var countOnlyPhoneNumberText = 0
+        var countAddInformation = 0
         presenter.userDao.users
-                .filter { user -> user.email.isEmpty() && !user.email.equals("null", true) && user.phone.isNotEmpty() && !user.phone.equals("null", true) }
-                .forEach { countOnlyPhoneNumberText++ }
+                .filter { user -> user.addInformation.isNotEmpty() && !user.addInformation.equals("null", true)}
+                .forEach { countAddInformation++ }
 
-        displayValues(countOnlyPhoneNumberText)
+        displayValues(countAddInformation)
     }
 
-    private fun displayValues(countActiveTrips: Int) {
-        countAddInformationText.text = StringBuilder(countAddInformationText.text).append(countActiveTrips.toString())
+    private fun displayValues(countAddInformation: Int) {
+        countAddInformationText.text = StringBuilder(countAddInformationText.text).append(countAddInformation.toString())
     }
 }

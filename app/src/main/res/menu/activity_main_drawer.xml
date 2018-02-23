@@ -39,6 +39,9 @@
             android:id="@+id/only_phone_number"
             android:title="@string/only_phone_number" />
         <item
+            android:id="@+id/contains_add_information"
+            android:title="@string/contains_add_information" />
+        <item
             android:id="@+id/parser_email"
             android:title="Email Parse" />
     </group>

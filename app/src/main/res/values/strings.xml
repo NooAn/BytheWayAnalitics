@@ -15,5 +15,6 @@
     <string name="active_trips">Активные поездки</string>
     <string name="budget_statistic">Статистика бютжета</string>
     <string name="only_phone_number">зарегестрированые через телефон</string>
+    <string name="contains_add_information">содержащие дополнительную информацию</string>
 
 </resources>
