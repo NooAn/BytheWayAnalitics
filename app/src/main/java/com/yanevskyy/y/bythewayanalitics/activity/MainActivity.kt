@@ -57,6 +57,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.contains_add_information -> {
                 FragmentAddInformation()
             }
+            R.id.fly_hours -> {
+                FragmentFlyHours()
+            }
             else -> {
                 throw InvalidKeyException()
             }

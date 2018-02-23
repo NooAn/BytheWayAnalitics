@@ -25,10 +25,7 @@
             android:title="With out travel" />
         <item
             android:id="@+id/fly_hours"
-            android:title="Fly fours" />
-        <item
-            android:id="@+id/users_with_personal_info"
-            android:title="Users with personal info" />
+            android:title="@string/fly_hours" />
         <item
             android:id="@+id/budget_statistic"
             android:title="@string/budget_statistic" />

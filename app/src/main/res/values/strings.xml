@@ -14,7 +14,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="active_trips">Активные поездки</string>
     <string name="budget_statistic">Статистика бютжета</string>
-    <string name="only_phone_number">зарегестрированые через телефон</string>
-    <string name="contains_add_information">содержащие дополнительную информацию</string>
+    <string name="only_phone_number">имеющие только телефон</string>
+    <string name="contains_add_information">имеющие доп. информацию</string>
+    <string name="fly_hours">пользователи с перелётами</string>
 
 </resources>
