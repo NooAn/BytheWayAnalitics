@@ -30,11 +30,11 @@
             android:id="@+id/users_with_personal_info"
             android:title="Users with personal info" />
         <item
-            android:id="@+id/activity_travels"
-            android:title="Activity travels" />
-        <item
             android:id="@+id/budget_statistic"
-            android:title="Budget statistic" />
+            android:title="@string/budget_statistic" />
+        <item
+            android:id="@+id/active_trips"
+            android:title="@string/active_trips" />
         <item
             android:id="@+id/parser_email"
             android:title="Email Parse" />

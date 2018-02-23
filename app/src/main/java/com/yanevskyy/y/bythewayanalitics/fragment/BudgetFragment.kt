@@ -16,8 +16,8 @@ class BudgetFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
             inflater.inflate(R.layout.fragment_budget, container, false)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         var totalBudget = 0L
         var maxBudget = Long.MIN_VALUE
@@ -31,9 +31,7 @@ class BudgetFragment : Fragment() {
             if (minBudget > user.budget) minBudget = user.budget
         }
 
-        val averageBudget = totalBudget / countUsers
-
-        displayValues(maxBudget, minBudget, averageBudget)
+        displayValues(maxBudget, minBudget, totalBudget / countUsers)
     }
 
     private fun displayValues(maxBudget: Long, minBudget: Long, averageBudget: Long) {

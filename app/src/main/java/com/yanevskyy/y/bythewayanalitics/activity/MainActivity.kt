@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.yanevskyy.y.bythewayanalitics.R
 import com.yanevskyy.y.bythewayanalitics.fragment.BudgetFragment
+import com.yanevskyy.y.bythewayanalitics.fragment.FragmentCountActiveTrips
 import com.yanevskyy.y.bythewayanalitics.fragment.FragmentLastActivityUsers
 import com.yanevskyy.y.bythewayanalitics.fragment.FragmentParseEmails
 import kotlinx.android.synthetic.main.activity_main.*
@@ -49,6 +50,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.budget_statistic -> {
                 BudgetFragment()
+            }
+            R.id.active_trips -> {
+                FragmentCountActiveTrips()
             }
             else -> {
                 throw InvalidKeyException()
