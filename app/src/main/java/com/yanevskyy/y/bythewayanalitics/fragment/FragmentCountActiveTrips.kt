@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.App
 import com.yanevskyy.y.bythewayanalitics.AppPresenter
 import com.yanevskyy.y.bythewayanalitics.R
-import kotlinx.android.synthetic.main.fragment_fragment_count_active_trips.*
+import kotlinx.android.synthetic.main.fragment_count_active_trips.*
 import java.util.*
 
 class FragmentCountActiveTrips : Fragment() {
@@ -16,13 +16,13 @@ class FragmentCountActiveTrips : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-            inflater.inflate(R.layout.fragment_fragment_count_active_trips, container, false)
+            inflater.inflate(R.layout.fragment_count_active_trips, container, false)
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         var countActiveTrips = 0
-        val currentTime = Calendar.getInstance().timeInMillis + 1000 + 60
+        val currentTime = Calendar.getInstance().timeInMillis - (1000 * 60 * 60 * 24)
         presenter.userDao.users
                 .filter { user ->
                     user.dates["start_date"]?.let { it > currentTime }
