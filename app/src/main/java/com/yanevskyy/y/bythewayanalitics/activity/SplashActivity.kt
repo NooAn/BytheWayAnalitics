@@ -22,6 +22,16 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         val users = HashSet<User>()
+        //FIXME
+/*
+                    store.collection(COLLECTION_USERS).get().addOnCompleteListener({ task ->
+                        if (task.isSuccessful) {
+                            val result: MutableList<User> = ArrayList()
+                            for (document in task.result) {
+                                Log.d(TAG, document.id + " => " + document.data)
+                                var user = User()
+                                    user = document.toObject(User::class.java)
+ */
         FirebaseFirestore.getInstance().collection("users").get().addOnSuccessListener { task ->
                 task.documents.forEach {
                     Log.d(ContentValues.TAG, it.id + " => " + it.data)
