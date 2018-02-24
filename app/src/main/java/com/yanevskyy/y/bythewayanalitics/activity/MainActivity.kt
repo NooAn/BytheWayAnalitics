@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.active_trips -> {
                 FragmentCountActiveTrips()
             }
+            R.id.count_users -> {
+                FragmentCountUsers()
+            }
             R.id.only_phone_number -> {
                 FragmentOnlyPhoneNumber()
             }
