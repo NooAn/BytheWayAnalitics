@@ -12,7 +12,7 @@
             android:title="Statistic on parameters" />
         <item
             android:id="@+id/top_cities"
-            android:title="Top cities" />
+            android:title="@string/top_cities" />
         <item
             android:id="@+id/count_users"
             android:title="@string/count_users" />

@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.last_activity_date -> {
                 FragmentLastActivityUsers()
             }
+            R.id.top_cities -> {
+                FragmentTopCities()
+            }
             R.id.budget_statistic -> {
                 BudgetFragment()
             }
