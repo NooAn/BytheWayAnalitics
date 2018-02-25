@@ -24,25 +24,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topFirstCityText" />
 
-
-    <!--<TextView-->
-    <!--android:id="@+id/topFirstCityText"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginTop="40dp"-->
-    <!--android:text="максимальный бюджет: "-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/topLastCityText"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginTop="40dp"-->
-    <!--android:text="минимальный бюджет: "-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toBottomOf="@id/topFirstCityText" />-->
-
 </android.support.constraint.ConstraintLayout>

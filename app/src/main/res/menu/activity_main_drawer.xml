@@ -16,10 +16,9 @@
         <item
             android:id="@+id/count_users"
             android:title="@string/count_users" />
-
         <item
-            android:id="@+id/social_network"
-            android:title="Social network" />
+            android:id="@+id/social_networks"
+            android:title="@string/social_networks" />
         <item
             android:id="@+id/with_out_travel"
             android:title="With out travel" />
