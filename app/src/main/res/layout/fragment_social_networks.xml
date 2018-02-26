@@ -4,43 +4,56 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/countAnyNetworkText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/contains_any_networks"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="проценты колличества пользователей имеющих"
-        app:layout_constraintTop_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/percentCountAccountsWithTGText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Телеграм: "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
-
-
-    <TextView
-        android:id="@+id/percentAccountsWithVKText"
+        android:id="@+id/countAllNetworksText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="ВК: "
+        android:text="@string/count_users_have"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/percentCountAccountsWithTGText" />
+        app:layout_constraintTop_toBottomOf="@id/countAnyNetworkText" />
+
 
     <TextView
-        android:id="@+id/percentAccountsWithWhatsappText"
+        android:id="@+id/countTGText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Whatsapp: "
+        android:layout_marginTop="10dp"
+        android:text="@string/contains_telegram"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/percentAccountsWithVKText" />
+        app:layout_constraintTop_toBottomOf="@+id/countAllNetworksText" />
+
+
+    <TextView
+        android:id="@+id/countVKText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/contains_vk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/countTGText" />
+
+    <TextView
+        android:id="@+id/countWhatsappText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/contains_whatsapp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/countVKText" />
 
 
 </android.support.constraint.ConstraintLayout>

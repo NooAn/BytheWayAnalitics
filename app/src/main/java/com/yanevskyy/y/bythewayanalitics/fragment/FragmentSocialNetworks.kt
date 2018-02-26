@@ -21,30 +21,37 @@ class FragmentSocialNetworks : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var countUsersWithSN = 0
-        var countAccountsWithTG = 0
-        var countAccountsWithVK = 0
-        var countAccountsWithWHATSAPP = 0
+        var countAnyNetworks = 0
+        var countTG = 0
+        var countVK = 0
+        var countWhatsapp = 0
         val countAllUsers = presenter.userDao.users.size
         presenter.userDao.users.filter { user -> user.socialNetwork.isNotEmpty() }
                 .forEach { user ->
                     Log.d("tag", user.name + "::: user.socialNetwork: " + user.socialNetwork)
-                    countUsersWithSN++
-                    user.socialNetwork["TG"]?.let { countAccountsWithTG++ }
-                    user.socialNetwork["VK"]?.let { countAccountsWithVK++ }
-                    user.socialNetwork["WHATSAPP"]?.let { countAccountsWithWHATSAPP++ }
+                    countAnyNetworks++
+                    user.socialNetwork["TG"]?.let { countTG++ }
+                    user.socialNetwork["VK"]?.let { countVK++ }
+                    user.socialNetwork["WHATSAPP"]?.let { countWhatsapp++ }
                 }
 
-        val percentAccountsWithTG = Math.round(countAccountsWithTG.toDouble() / countAllUsers * 100).toInt()
-        val percentAccountsWithVK = Math.round(countAccountsWithVK.toDouble() / countAllUsers * 100).toInt()
-        val percentAccountsWithWhatsapp = Math.round(countAccountsWithWHATSAPP.toDouble() / countAllUsers * 100).toInt()
+        val percentAccountsWithTG = Math.round(countTG.toDouble() / countAllUsers * 100).toInt()
+        val percentAccountsWithVK = Math.round(countVK.toDouble() / countAllUsers * 100).toInt()
+        val percentAccountsWithWhatsapp = Math.round(countWhatsapp.toDouble() / countAllUsers * 100).toInt()
 
-        displayValues(percentAccountsWithTG, percentAccountsWithVK, percentAccountsWithWhatsapp)
+        displayValues(countAnyNetworks, percentAccountsWithTG, percentAccountsWithVK, percentAccountsWithWhatsapp,
+                countTG, countVK, countWhatsapp)
     }
 
-    private fun displayValues(percentAccountsWithTG: Int, percentAccountsWithVK: Int, percentAccountsWithWhatsapp: Int) {
-        percentCountAccountsWithTGText.text = StringBuilder(percentCountAccountsWithTGText.text).append(percentAccountsWithTG).append("%")
-        percentAccountsWithVKText.text = StringBuilder(percentAccountsWithVKText.text).append(percentAccountsWithVK).append("%")
-        percentAccountsWithWhatsappText.text = StringBuilder(percentAccountsWithWhatsappText.text).append(percentAccountsWithWhatsapp).append("%")
+    private fun displayValues(countAnyNetworks: Int, percentTG: Int, percentVK: Int, percentWhatsapp: Int, countTG: Int,
+                              countVK: Int, countWhatsapp: Int) {
+        countAnyNetworkText.text = StringBuilder(context.getString(R.string.contains_any_networks)).append(" ")
+                .append(countAnyNetworks)
+        countTGText.text = StringBuilder(context.getString(R.string.contains_telegram)).append(" ")
+                .append(countTG).append(" (").append(percentTG).append("%").append(")")
+        countVKText.text = StringBuilder(context.getString(R.string.contains_vk)).append(" ").append(countVK)
+                .append(" (").append(percentVK).append("%").append(")")
+        countWhatsappText.text = StringBuilder(context.getString(R.string.contains_whatsapp)).append(" ")
+                .append(countWhatsapp).append(" (").append(percentWhatsapp).append("%").append(")")
     }
 }
