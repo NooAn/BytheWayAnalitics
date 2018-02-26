@@ -25,19 +25,18 @@ class FragmentSocialNetworks : Fragment() {
         var countTG = 0
         var countVK = 0
         var countWhatsapp = 0
-        val countAllUsers = presenter.userDao.users.size
-        presenter.userDao.users.filter { user -> user.socialNetwork.isNotEmpty() }
+        presenter.userDao.users.filter {user ->
+            user.socialNetwork.isNotEmpty() }
                 .forEach { user ->
-                    Log.d("tag", user.name + "::: user.socialNetwork: " + user.socialNetwork)
                     countAnyNetworks++
                     user.socialNetwork["TG"]?.let { countTG++ }
                     user.socialNetwork["VK"]?.let { countVK++ }
                     user.socialNetwork["WHATSAPP"]?.let { countWhatsapp++ }
                 }
 
-        val percentAccountsWithTG = Math.round(countTG.toDouble() / countAllUsers * 100).toInt()
-        val percentAccountsWithVK = Math.round(countVK.toDouble() / countAllUsers * 100).toInt()
-        val percentAccountsWithWhatsapp = Math.round(countWhatsapp.toDouble() / countAllUsers * 100).toInt()
+        val percentAccountsWithTG = Math.round(countTG.toDouble() / countAnyNetworks * 100).toInt()
+        val percentAccountsWithVK = Math.round(countVK.toDouble() / countAnyNetworks * 100).toInt()
+        val percentAccountsWithWhatsapp = Math.round(countWhatsapp.toDouble() / countAnyNetworks * 100).toInt()
 
         displayValues(countAnyNetworks, percentAccountsWithTG, percentAccountsWithVK, percentAccountsWithWhatsapp,
                 countTG, countVK, countWhatsapp)
