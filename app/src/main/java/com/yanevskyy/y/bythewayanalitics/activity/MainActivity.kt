@@ -48,6 +48,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.top_cities -> {
                 FragmentTopCities()
             }
+            R.id.not_created_trip -> {
+                FragmentNotCreatedTrips()
+            }
             R.id.social_networks -> {
                 FragmentSocialNetworks()
             }

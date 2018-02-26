@@ -25,5 +25,6 @@
     <string name="contains_vk">ВК:</string>
     <string name="contains_whatsapp">Whatsapp:</string>
     <string name="count_users_have">колличества пользователей имеющих:</string>
+    <string name="not_created_trips">не создали путешествие</string>
 
 </resources>

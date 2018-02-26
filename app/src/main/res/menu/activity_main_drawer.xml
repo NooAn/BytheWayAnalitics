@@ -20,8 +20,8 @@
             android:id="@+id/social_networks"
             android:title="@string/social_networks" />
         <item
-            android:id="@+id/with_out_travel"
-            android:title="With out travel" />
+            android:id="@+id/not_created_trip"
+            android:title="@string/not_created_trips" />
         <item
             android:id="@+id/fly_hours"
             android:title="@string/fly_hours" />
