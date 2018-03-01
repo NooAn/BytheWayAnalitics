@@ -22,24 +22,25 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         val users = HashSet<User>()
-        //FIXME
-/*
-                    store.collection(COLLECTION_USERS).get().addOnCompleteListener({ task ->
-                        if (task.isSuccessful) {
-                            val result: MutableList<User> = ArrayList()
-                            for (document in task.result) {
-                                Log.d(TAG, document.id + " => " + document.data)
-                                var user = User()
-                                    user = document.toObject(User::class.java)
- */
+
+        //FIXME да, это надо вставить Олег, вместо той фигни что ниже :)
+        /*
+                   store.collection(COLLECTION_USERS).get().addOnCompleteListener({ task ->
+                       if (task.isSuccessful) {
+                           val result: MutableList<User> = ArrayList()
+                           for (document in task.result) {
+                               Log.d(TAG, document.id + " => " + document.data)
+                               var user = User()
+                                   user = document.toObject(User::class.java)
+*/
         FirebaseFirestore.getInstance().collection("users").get().addOnSuccessListener { task ->
-                task.documents.forEach {
-                    Log.d(ContentValues.TAG, it.id + " => " + it.data)
-                    users.add(fillUserDao(it))
-                }
+            task.documents.forEach {
+                Log.d(ContentValues.TAG, it.id + " => " + it.data)
+                users.add(fillUserDao(it))
+            }
             presenter.userDao = UserDao(users)
             startActivity(Intent(this, MainActivity::class.java))
-        }.addOnFailureListener({ error -> Log.w(ContentValues.TAG, "Error getting documents.", error)})
+        }.addOnFailureListener({ error -> Log.w(ContentValues.TAG, "Error getting documents.", error) })
     }
 
     fun fillUserDao(documentSnapshot: DocumentSnapshot): User {
