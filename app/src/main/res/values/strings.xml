@@ -14,5 +14,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="active_trips">Активные поездки</string>
     <string name="budget_statistic">Статистика бютжета</string>
+    <string name="only_phone_number">имеющие только телефон</string>
+    <string name="contains_add_information">имеющие доп. информацию</string>
+    <string name="fly_hours">пользователи с перелётами</string>
+    <string name="count_users">колличесвто пользователей</string>
+    <string name="top_cities">Частые города</string>
+    <string name="social_networks">Социальные сети</string>
+    <string name="contains_any_networks">имеющие хотя бы одну соц сеть:</string>
+    <string name="contains_telegram">Телеграм:</string>
+    <string name="contains_vk">ВК:</string>
+    <string name="contains_whatsapp">Whatsapp:</string>
+    <string name="count_users_have">колличества пользователей имеющих:</string>
+    <string name="not_created_trips">не создали путешествие</string>
 
 </resources>

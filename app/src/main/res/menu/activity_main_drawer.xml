@@ -12,29 +12,31 @@
             android:title="Statistic on parameters" />
         <item
             android:id="@+id/top_cities"
-            android:title="Top cities" />
+            android:title="@string/top_cities" />
         <item
             android:id="@+id/count_users"
-            android:title="Count users" />
-
+            android:title="@string/count_users" />
         <item
-            android:id="@+id/social_network"
-            android:title="Social network" />
+            android:id="@+id/social_networks"
+            android:title="@string/social_networks" />
         <item
-            android:id="@+id/with_out_travel"
-            android:title="With out travel" />
+            android:id="@+id/not_created_trip"
+            android:title="@string/not_created_trips" />
         <item
             android:id="@+id/fly_hours"
-            android:title="Fly fours" />
-        <item
-            android:id="@+id/users_with_personal_info"
-            android:title="Users with personal info" />
+            android:title="@string/fly_hours" />
         <item
             android:id="@+id/budget_statistic"
             android:title="@string/budget_statistic" />
         <item
             android:id="@+id/active_trips"
             android:title="@string/active_trips" />
+        <item
+            android:id="@+id/only_phone_number"
+            android:title="@string/only_phone_number" />
+        <item
+            android:id="@+id/contains_add_information"
+            android:title="@string/contains_add_information" />
         <item
             android:id="@+id/parser_email"
             android:title="Email Parse" />
