@@ -9,7 +9,7 @@ class App : Application() {
     companion object {
         lateinit var INSTANCE: App
     }
-    var appPresenter: AppPresenter = AppPresenter()
+    val  appPresenter: AppPresenter = AppPresenter()
 
     override fun onCreate() {
         super.onCreate()

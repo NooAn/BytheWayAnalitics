@@ -8,6 +8,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import com.yanevskyy.y.bythewayanalitics.App
 import com.yanevskyy.y.bythewayanalitics.R
 import com.yanevskyy.y.bythewayanalitics.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,8 +30,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
-        supportFragmentManager.beginTransaction().replace(R.id.container, FragmentParseEmails(), LAST_ACTIVITY).addToBackStack(LAST_ACTIVITY).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.container, SearchScreen(), LAST_ACTIVITY).addToBackStack(LAST_ACTIVITY).commit()
     }
+
+    // метод использовать. реализацию изменить! убрать хранение с апп.
+    fun getUsers() =
+            App.INSTANCE.appPresenter
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -71,6 +76,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.fly_hours -> {
                 FragmentFlyHours()
+            }
+            R.id.search_by_name -> {
+                SearchScreen()
             }
             else -> {
                 throw InvalidKeyException()
