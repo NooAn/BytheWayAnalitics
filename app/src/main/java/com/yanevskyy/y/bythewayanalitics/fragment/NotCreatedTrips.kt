@@ -10,7 +10,7 @@ import com.yanevskyy.y.bythewayanalitics.AppPresenter
 import com.yanevskyy.y.bythewayanalitics.R
 import kotlinx.android.synthetic.main.fragment_not_created_trips.*
 
-class FragmentNotCreatedTrips : Fragment() {
+class NotCreatedTrips : Fragment() {
     private var presenter: AppPresenter = App.INSTANCE.appPresenter
 
 

@@ -8,27 +8,26 @@ import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.App
 import com.yanevskyy.y.bythewayanalitics.AppPresenter
 import com.yanevskyy.y.bythewayanalitics.R
-import kotlinx.android.synthetic.main.fragment_add_info.*
+import kotlinx.android.synthetic.main.fragment_all_users.*
 
-class FragmentAddInformation : Fragment() {
+
+class CountUsers : Fragment() {
     private var presenter: AppPresenter = App.INSTANCE.appPresenter
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-            inflater.inflate(R.layout.fragment_add_info, container, false)
+            inflater.inflate(R.layout.fragment_all_users, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var countAddInformation = 0
-        presenter.userDao.users
-                .filter { user -> user.addInformation.isNotEmpty() && !user.addInformation.equals("null", true) }
-                .forEach { countAddInformation++ }
+        var countAllUsers = 0
+        presenter.userDao.users.forEach { countAllUsers++ }
 
-        displayValues(countAddInformation)
+        displayValues(countAllUsers)
     }
 
-    private fun displayValues(countAddInformation: Int) {
-        countAddInformationText.text = StringBuilder(countAddInformationText.text).append(countAddInformation.toString())
+    private fun displayValues(countAllUsers: Int) {
+        countAllUsersText.text = StringBuilder(countAllUsersText.text).append(countAllUsers.toString())
     }
 }

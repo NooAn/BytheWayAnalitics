@@ -10,7 +10,7 @@ import com.yanevskyy.y.bythewayanalitics.AppPresenter
 import com.yanevskyy.y.bythewayanalitics.R
 import kotlinx.android.synthetic.main.fragment_budget.*
 
-class BudgetFragment : Fragment() {
+class Budget : Fragment() {
     private var presenter: AppPresenter = App.INSTANCE.appPresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =

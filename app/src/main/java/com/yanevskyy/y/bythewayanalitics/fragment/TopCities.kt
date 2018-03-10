@@ -11,7 +11,7 @@ import com.yanevskyy.y.bythewayanalitics.AppPresenter
 import com.yanevskyy.y.bythewayanalitics.R
 import kotlinx.android.synthetic.main.fragment_top_cities.*
 
-class FragmentTopCities : Fragment() {
+class TopCities : Fragment() {
     private var presenter: AppPresenter = App.INSTANCE.appPresenter
 
 

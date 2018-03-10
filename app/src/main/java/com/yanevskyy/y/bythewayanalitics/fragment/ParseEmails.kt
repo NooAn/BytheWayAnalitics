@@ -30,7 +30,7 @@ import java.util.concurrent.atomic.AtomicInteger
  * Created by Andrei_Gusenkov on 2/19/2018.
  */
 
-class FragmentParseEmails : Fragment() {
+class ParseEmails : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

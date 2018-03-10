@@ -20,7 +20,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class FragmentLastActivityUsers : Fragment() {
+class LastActivityUsers : Fragment() {
     private var presenter: AppPresenter = App.INSTANCE.appPresenter
     private var timeLastActivityUser: Long = Calendar.getInstance().timeInMillis
     private lateinit var mDateListener: DatePickerDialog.OnDateSetListener

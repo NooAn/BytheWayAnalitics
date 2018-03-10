@@ -11,7 +11,7 @@ import com.yanevskyy.y.bythewayanalitics.AppPresenter
 import com.yanevskyy.y.bythewayanalitics.R
 import kotlinx.android.synthetic.main.fragment_social_networks.*
 
-class FragmentSocialNetworks : Fragment() {
+class SocialNetworks : Fragment() {
     private var presenter: AppPresenter = App.INSTANCE.appPresenter
 
 

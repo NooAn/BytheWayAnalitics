@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
-        supportFragmentManager.beginTransaction().replace(R.id.container, FragmentParseEmails(), LAST_ACTIVITY).addToBackStack(LAST_ACTIVITY).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.container, ParseEmails(), LAST_ACTIVITY).addToBackStack(LAST_ACTIVITY).commit()
     }
 
     override fun onBackPressed() {
@@ -43,34 +43,34 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val fragment: Fragment = when (item.itemId) {
             R.id.last_activity_date -> {
-                FragmentLastActivityUsers()
+                LastActivityUsers()
             }
             R.id.top_cities -> {
-                FragmentTopCities()
+                TopCities()
             }
             R.id.not_created_trip -> {
-                FragmentNotCreatedTrips()
+                NotCreatedTrips()
             }
             R.id.social_networks -> {
-                FragmentSocialNetworks()
+                SocialNetworks()
             }
             R.id.budget_statistic -> {
-                BudgetFragment()
+                Budget()
             }
             R.id.active_trips -> {
-                FragmentCountActiveTrips()
+                CountActiveTrips()
             }
             R.id.count_users -> {
-                FragmentCountUsers()
+                CountUsers()
             }
             R.id.only_phone_number -> {
-                FragmentOnlyPhoneNumber()
+                OnlyPhoneNumber()
             }
             R.id.contains_add_information -> {
-                FragmentAddInformation()
+                AddInformation()
             }
             R.id.fly_hours -> {
-                FragmentFlyHours()
+                FlyHours()
             }
             else -> {
                 throw InvalidKeyException()

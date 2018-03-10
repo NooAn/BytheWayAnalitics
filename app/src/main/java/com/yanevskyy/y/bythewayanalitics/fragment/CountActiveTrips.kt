@@ -8,30 +8,32 @@ import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.App
 import com.yanevskyy.y.bythewayanalitics.AppPresenter
 import com.yanevskyy.y.bythewayanalitics.R
-import kotlinx.android.synthetic.main.fragment_only_phone_number.*
+import kotlinx.android.synthetic.main.fragment_count_active_trips.*
+import java.util.*
 
-class FragmentOnlyPhoneNumber : Fragment() {
+class CountActiveTrips : Fragment() {
     private var presenter: AppPresenter = App.INSTANCE.appPresenter
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-            inflater.inflate(R.layout.fragment_only_phone_number, container, false)
+            inflater.inflate(R.layout.fragment_count_active_trips, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var countOnlyPhoneNumber = 0
+        var countActiveTrips = 0
+        val currentTime = Calendar.getInstance().timeInMillis - (1000 * 60 * 60 * 24)
         presenter.userDao.users
                 .filter { user ->
-                    (user.email.isEmpty() || user.email.equals("null", true))
-                            && user.phone.isNotEmpty() && !user.phone.equals("null", true)
+                    user.dates["start_date"]?.let { it > currentTime }
+                            ?: (user.dates["end_date"]?.let { it > currentTime } ?: false)
                 }
-                .forEach { countOnlyPhoneNumber++ }
+                .forEach { countActiveTrips++ }
 
-        displayValues(countOnlyPhoneNumber)
+        displayValues(countActiveTrips)
     }
 
-    private fun displayValues(countOnlyPhoneNumber: Int) {
-        countOnlyPhoneNumberText.text = StringBuilder(countOnlyPhoneNumberText.text).append(countOnlyPhoneNumber.toString())
+    private fun displayValues(countActiveTrips: Int) {
+        countActiveTripsText.text = StringBuilder(countActiveTripsText.text).append(countActiveTrips.toString())
     }
 }
