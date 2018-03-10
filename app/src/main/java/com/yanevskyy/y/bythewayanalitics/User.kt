@@ -54,7 +54,8 @@ data class User(var name: String = "",
                 var sex: Int = 0,
                 var socialNetwork: HashMap<String, String> = hashMapOf<String, String>(),
                 var data: Long = 0,
-                var urlPhoto: String = "https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg") : Serializable
+                var urlPhoto: String = "https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg",
+                var catchingDate: Long = 0L) : Serializable
 
 data class TeamUser(val email: String, val is_robot: String, val is_manager: String, val IsAgent: String, val is_test: String)
 data class TeamUserData(val IsSuccess: Boolean, val InUser: TeamUser)
