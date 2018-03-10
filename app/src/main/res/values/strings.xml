@@ -26,5 +26,7 @@
     <string name="contains_whatsapp">Whatsapp:</string>
     <string name="count_users_have">колличества пользователей имеющих:</string>
     <string name="not_created_trips">не создали путешествие</string>
+    <string name="contains_fb">FB: 18% (1223)</string>
+    <string name="contains_cs">CS: 23%(1221)</string>
 
 </resources>
