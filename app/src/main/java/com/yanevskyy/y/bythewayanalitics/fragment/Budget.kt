@@ -23,8 +23,7 @@ class Budget : Fragment() {
         var maxBudget = Long.MIN_VALUE
         var minBudget = Long.MAX_VALUE
         var countUsers = 0
-        for (user in presenter.userDao.users) {
-            if (user.cities.isEmpty()) continue
+        presenter.userDao.users.filter { user -> user.cities.isNotEmpty() && user.budget > 0 }.forEach { user ->
             countUsers++
             totalBudget += user.budget
             if (maxBudget < user.budget) maxBudget = user.budget
