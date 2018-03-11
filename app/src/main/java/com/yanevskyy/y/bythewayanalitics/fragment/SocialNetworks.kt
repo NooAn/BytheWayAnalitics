@@ -26,14 +26,14 @@ class SocialNetworks : Fragment() {
         var countAnyNetworks = 0
         presenter.userDao.users.filter { user -> user.socialNetwork.isNotEmpty() }
                 .forEach { user ->
-                    user.socialNetwork.forEach { currentUsersNetwork ->
-                        networks[currentUsersNetwork.key]?.let { networks[currentUsersNetwork.key] = it.inc() }
+                    user.socialNetwork.forEach { currentUsersNetworkPair ->
+                        networks[currentUsersNetworkPair.key]?.let { networks[currentUsersNetworkPair.key] = it.inc() }
                         countAnyNetworks++
                     }
                 }
         val percentsNetworks = mutableMapOf<String, Int>()
-        networks.forEach { currentNetwork ->
-            percentsNetworks[currentNetwork.key] = Math.round(currentNetwork.value.toDouble() / countAnyNetworks * 100).toInt()
+        networks.forEach { currentNetworkPair ->
+            percentsNetworks[currentNetworkPair.key] = Math.round(currentNetworkPair.value.toDouble() / countAnyNetworks * 100).toInt()
         }
         displayValues(countAnyNetworks, percentsNetworks, networks)
     }
@@ -41,18 +41,18 @@ class SocialNetworks : Fragment() {
     private fun displayValues(countAnyNetworks: Int, percentsNetworks: MutableMap<String, Int>, networks: MutableMap<String, Int>) {
         countAnyNetworkText.text = StringBuilder(context?.getString(R.string.contains_any_networks)).append(" ")
                 .append(countAnyNetworks)
-        networks.forEach { networkCount ->
-            percentsNetworks[networkCount.key]?.let { percentsNetwork ->
-                val displayCount = when (networkCount.key) {
+        networks.forEach { networkCountPair ->
+            percentsNetworks[networkCountPair.key]?.let { percentsNetworkPair ->
+                val displayCount = when (networkCountPair.key) {
                     in SocialNetwork.CS.name -> countCSText
                     in SocialNetwork.FB.name -> countFBText
                     in SocialNetwork.TG.name -> countTGText
                     in SocialNetwork.VK.name -> countVKText
-                    in SocialNetwork.WHATSAPP.name -> countWhatsappText
+                    in SocialNetwork.WHATSAPP.name -> countWhatsAppText
                     else -> null
                 }
-                displayCount?.text = StringBuilder().append(" ").append(networkCount).append(" (")
-                        .append(percentsNetwork).append("%").append(")")
+                displayCount?.text = StringBuilder(networkCountPair.key).append(": ").append(networkCountPair.value).append(" (")
+                        .append(percentsNetworkPair).append("%").append(")")
             }
         }
     }

@@ -1,8 +1,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/countAnyNetworkText"
@@ -30,10 +30,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/contains_telegram"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countAllNetworksText" />
+        app:layout_constraintTop_toBottomOf="@+id/countAllNetworksText"
+        tools:text="@string/contains_TG" />
 
 
     <TextView
@@ -41,40 +41,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/contains_vk"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/countTGText" />
-
-    <TextView
-        android:id="@+id/countWhatsappText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/contains_whatsapp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/countVKText" />
+        app:layout_constraintStart_toStartOf="@id/countTGText"
+        app:layout_constraintTop_toBottomOf="@id/countTGText"
+        tools:text="@string/contains_VK" />
 
     <TextView
         android:id="@+id/countFBText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        tools:text="@string/contains_fb"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/countWhatsappText" />
+        app:layout_constraintStart_toStartOf="@id/countVKText"
+        app:layout_constraintTop_toBottomOf="@id/countVKText"
+        tools:text="@string/contains_FB" />
 
     <TextView
         android:id="@+id/countCSText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        tools:text="@string/contains_cs"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/countFBText" />
+        app:layout_constraintStart_toStartOf="@id/countFBText"
+        app:layout_constraintTop_toBottomOf="@id/countFBText"
+        tools:text="@string/contains_CS" />
+
+    <TextView
+        android:id="@+id/countWhatsAppText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/countCSText"
+        app:layout_constraintTop_toBottomOf="@id/countCSText"
+        tools:text="@string/contains_whatsApp" />
 
 
 </android.support.constraint.ConstraintLayout>

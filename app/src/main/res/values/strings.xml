@@ -21,12 +21,12 @@
     <string name="top_cities">Частые города</string>
     <string name="social_networks">Социальные сети</string>
     <string name="contains_any_networks">имеющие хотя бы одну соц сеть:</string>
-    <string name="contains_telegram">Телеграм:</string>
-    <string name="contains_vk">ВК:</string>
-    <string name="contains_whatsapp">Whatsapp:</string>
+    <string name="contains_TG">TG: 123 (3%)</string>
+    <string name="contains_VK">VK: 123 (3%)</string>
+    <string name="contains_whatsApp">WhatsApp: 123 (3%)</string>
+    <string name="contains_FB">FB: 1223 (30%)</string>
+    <string name="contains_CS">CS: 122 (3%)</string>
     <string name="count_users_have">колличества пользователей имеющих:</string>
     <string name="not_created_trips">не создали путешествие</string>
-    <string name="contains_fb">FB: 18% (1223)</string>
-    <string name="contains_cs">CS: 23%(1221)</string>
 
 </resources>
