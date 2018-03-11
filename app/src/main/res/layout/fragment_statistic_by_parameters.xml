@@ -1,0 +1,93 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/countCurrentSexText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/count_sexes" />
+
+    <LinearLayout
+        android:id="@+id/sexes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/countCurrentSexText">
+
+        <TextView
+            android:id="@+id/countSexMText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="мужчин: 3000" />
+
+        <TextView
+            android:id="@+id/countSexWText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="женщины: 3000" />
+
+        <TextView
+            android:id="@+id/countSexAnyText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="не указано: 3000" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/sexes">
+
+        <TextView
+            android:id="@+id/groupsByYears"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:text="@string/groups_users_by_age"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sexes" />
+
+        <ListView
+            android:id="@+id/listYears"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="25"
+            tools:listitem="@layout/count_groups_item" />
+
+        <TextView
+            android:id="@+id/groupsByMethods"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:text="@string/count_types_moving" />
+
+        <ListView
+            android:id="@+id/listMethods"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="25"
+            android:layout_marginBottom="110dip"
+            tools:listitem="@layout/count_groups_item" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

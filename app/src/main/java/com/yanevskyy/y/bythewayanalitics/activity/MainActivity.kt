@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val fragment: Fragment = when (item.itemId) {
             R.id.last_activity_date -> LastActivityUsers()
+            R.id.statistic_by_params -> StatisticByParams()
             R.id.top_cities -> TopCities()
             R.id.social_networks -> SocialNetworks()
             R.id.budget_statistic -> Budget()

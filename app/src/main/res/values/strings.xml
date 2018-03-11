@@ -26,10 +26,17 @@
     <string name="contains_whatsApp">WhatsApp: 123 (3%)</string>
     <string name="contains_FB">FB: 1223 (30%)</string>
     <string name="contains_CS">CS: 122 (3%)</string>
+    <string name="count_mans">мужчин:</string>
+    <string name="count_woman">женщин:</string>
+    <string name="count_any_sex">неопределено:</string>
     <string name="count_users_have">колличества пользователей имеющих:</string>
     <string name="not_created_trips">не создали путешествие</string>
     <string name="total_quantity_users">общее колличество пользователей:</string>
     <string name="count_active_trips">колличество активных поездок:</string>
     <string name="count_not_active_trips">колличество не созданных поездок</string>
+    <string name="statistic_by_params">сттатистика по параметрам</string>
+    <string name="count_types_moving">колличество пользовательских видов передвижения</string>
+    <string name="groups_users_by_age">группы пользователей по возрасту</string>
+    <string name="count_sexes">количество пользователей каждого пола:</string>
 
 </resources>

@@ -8,8 +8,8 @@
             android:id="@+id/last_activity_date"
             android:title="Last activity" />
         <item
-            android:id="@+id/statistic_on_param"
-            android:title="Statistic on parameters" />
+            android:id="@+id/statistic_by_params"
+            android:title="@string/statistic_by_params" />
         <item
             android:id="@+id/top_cities"
             android:title="@string/top_cities" />

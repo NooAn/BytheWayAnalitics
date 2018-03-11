@@ -39,7 +39,7 @@ class SocialNetworks : Fragment() {
     }
 
     private fun displayValues(countAnyNetworks: Int, percentsNetworks: MutableMap<String, Int>, networks: MutableMap<String, Int>) {
-        countAnyNetworkText.text = StringBuilder(context?.getString(R.string.contains_any_networks)).append(" ")
+        countSexMText.text = StringBuilder(context?.getString(R.string.contains_any_networks)).append(" ")
                 .append(countAnyNetworks)
         networks.forEach { networkCountPair ->
             percentsNetworks[networkCountPair.key]?.let { percentsNetworkPair ->
