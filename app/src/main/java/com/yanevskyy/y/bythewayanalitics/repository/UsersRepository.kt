@@ -18,7 +18,7 @@ class UsersRepository {
                 users.add(fillUserDao(it))
             }
             listener.onSuccessRequested(users)
-        }.addOnFailureListener({ error -> Log.w(ContentValues.TAG, "Error getting documents.", error) })
+        }.addOnFailureListener({ error -> listener.onFailureRequested(error) })
     }
 
     private fun fillUserDao(documentSnapshot: DocumentSnapshot): User {
@@ -61,5 +61,7 @@ class UsersRepository {
 
 abstract class OnRequestedUsers {
     abstract fun onSuccessRequested(users: MutableList<User>)
-    fun onFailureRequested() {}
+    fun onFailureRequested(error: Exception) {
+        Log.w(ContentValues.TAG, "Error getting documents.", error)
+    }
 }
