@@ -24,7 +24,7 @@ class UsersStatistic : Fragment() {
 
         var countNotCreatedTrips = 0
         presenter.userDao.users.filter { user -> user.cities.isEmpty() }.forEach { countNotCreatedTrips++ }
-        val percentsNotCreatedTrips = Math.round(countNotCreatedTrips.toDouble() / presenter.userDao.users.size * 100.0).toInt()
+        val percentsNotCreatedTrips = presenter.calculatePercents(countNotCreatedTrips, presenter.userDao.users.size)
 
         var countActiveTrips = 0
         val currentTime = Calendar.getInstance().timeInMillis - (1000 * 60 * 60 * 24)
@@ -34,7 +34,7 @@ class UsersStatistic : Fragment() {
                             ?: (user.dates["end_date"]?.let { it > currentTime } ?: false)
                 }
                 .forEach { countActiveTrips++ }
-        val percentsCountActiveTrips = Math.round(countActiveTrips.toDouble() / presenter.userDao.users.size * 100.0).toInt()
+        val percentsCountActiveTrips = presenter.calculatePercents(countActiveTrips, presenter.userDao.users.size)
 
         displayValues(presenter.userDao.users.size, countNotCreatedTrips, percentsNotCreatedTrips, countActiveTrips, percentsCountActiveTrips)
     }

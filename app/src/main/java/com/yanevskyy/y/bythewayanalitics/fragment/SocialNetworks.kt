@@ -33,7 +33,7 @@ class SocialNetworks : Fragment() {
                 }
         val percentsNetworks = mutableMapOf<String, Int>()
         networks.forEach { currentNetworkPair ->
-            percentsNetworks[currentNetworkPair.key] = Math.round(currentNetworkPair.value.toDouble() / countAnyNetworks * 100).toInt()
+            percentsNetworks[currentNetworkPair.key] = presenter.calculatePercents(currentNetworkPair.value, countAnyNetworks)
         }
         displayValues(countAnyNetworks, percentsNetworks, networks)
     }
