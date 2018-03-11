@@ -42,39 +42,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val fragment: Fragment = when (item.itemId) {
-            R.id.last_activity_date -> {
-                LastActivityUsers()
-            }
-            R.id.top_cities -> {
-                TopCities()
-            }
-            R.id.not_created_trip -> {
-                NotCreatedTrips()
-            }
-            R.id.social_networks -> {
-                SocialNetworks()
-            }
-            R.id.budget_statistic -> {
-                Budget()
-            }
-            R.id.active_trips -> {
-                CountActiveTrips()
-            }
-            R.id.count_users -> {
-                CountUsers()
-            }
-            R.id.only_phone_number -> {
-                OnlyPhoneNumber()
-            }
-            R.id.contains_add_information -> {
-                AddInformation()
-            }
-            R.id.fly_hours -> {
-                FlyHours()
-            }
-            else -> {
-                throw InvalidKeyException()
-            }
+            R.id.last_activity_date -> LastActivityUsers()
+            R.id.top_cities -> TopCities()
+            R.id.social_networks -> SocialNetworks()
+            R.id.budget_statistic -> Budget()
+            R.id.users_statistic -> UsersStatistic()
+            R.id.only_phone_number -> OnlyPhoneNumber()
+            R.id.contains_add_information -> AddInformation()
+            R.id.fly_hours -> FlyHours()
+            else -> throw InvalidKeyException()
         }
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment, LAST_ACTIVITY)
                 .addToBackStack(LAST_ACTIVITY).commit()
