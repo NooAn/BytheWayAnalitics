@@ -5,15 +5,19 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.yanevskyy.y.bythewayanalitics.App
-import com.yanevskyy.y.bythewayanalitics.AppPresenter
 import com.yanevskyy.y.bythewayanalitics.R
+import com.yanevskyy.y.bythewayanalitics.catching_users.DbManager
+import com.yanevskyy.y.bythewayanalitics.catching_users.OnInstallDates
+import com.yanevskyy.y.bythewayanalitics.presenter.StatisticPresenter
 import kotlinx.android.synthetic.main.fragment_users_statistic.*
+import org.koin.android.ext.android.inject
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 class UsersStatistic : Fragment() {
-    private var presenter: AppPresenter = App.INSTANCE.appPresenter
+    val presenter: StatisticPresenter by inject()
+    private val dbManager: DbManager by inject()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
@@ -36,13 +40,21 @@ class UsersStatistic : Fragment() {
                 .forEach { countActiveTrips++ }
         val percentsCountActiveTrips = presenter.calculatePercents(countActiveTrips, presenter.userDao.users.size)
 
-        displayValues(presenter.userDao.users.size, countNotCreatedTrips, percentsNotCreatedTrips, countActiveTrips, percentsCountActiveTrips)
+        dbManager.installDatesInUsers(presenter.userDao.users.toMutableList(), object : OnInstallDates {
+            override fun onInstalled() {
+                val timeOneDayAgo = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(1)
+                val countUsersExistOneDay = presenter.userDao.users.count { it.catchingDate > timeOneDayAgo || it.catchingDate == 0L }
+                displayValues(presenter.userDao.users.size, countUsersExistOneDay, countNotCreatedTrips, percentsNotCreatedTrips, countActiveTrips, percentsCountActiveTrips)
+            }
+        })
     }
 
-    private fun displayValues(countAllUsers: Int, countNotCreatedTrips: Int, percentsNotCreatedTrips: Int,
+    private fun displayValues(countAllUsers: Int, countUsersExistOneDay: Int, countNotCreatedTrips: Int, percentsNotCreatedTrips: Int,
                               countActiveTrips: Int, percentsCountActiveTrips: Int) {
         countAllUsersText.text = StringBuilder(context?.getString(R.string.total_quantity_users)).append(" ")
                 .append(countAllUsers.toString())
+        countNewUsersText.text = StringBuilder(context?.getString(R.string.count_new_users)).append(" ")
+                .append(countUsersExistOneDay.toString())
         countNotCreatedTripsText.text = StringBuilder(context?.getString(R.string.not_created_trips)).append(" ")
                 .append(countNotCreatedTrips.toString()).append(" (").append(percentsNotCreatedTrips).append("%)")
         countActiveTripsText.text = StringBuilder(context?.getString(R.string.count_active_trips)).append(" ")

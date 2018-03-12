@@ -13,15 +13,16 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.yanevskyy.y.bythewayanalitics.App
-import com.yanevskyy.y.bythewayanalitics.AppPresenter
+import com.yanevskyy.y.bythewayanalitics.presenter.StatisticPresenter
 import com.yanevskyy.y.bythewayanalitics.R
 import kotlinx.android.synthetic.main.fragment_last_activity_users.*
+import org.koin.android.ext.android.inject
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class LastActivityUsers : Fragment() {
-    private var presenter: AppPresenter = App.INSTANCE.appPresenter
+    val presenter: StatisticPresenter by inject()
     private var timeLastActivityUser: Long = Calendar.getInstance().timeInMillis
     private lateinit var mDateListener: DatePickerDialog.OnDateSetListener
     private lateinit var calendar: Calendar

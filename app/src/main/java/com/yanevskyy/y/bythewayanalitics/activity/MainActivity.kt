@@ -16,7 +16,6 @@ import java.security.InvalidKeyException
 
 
 const val LAST_ACTIVITY = "LAST_ACTIVITY"
-const val USERS_DAO = "USERS_DAO"
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {

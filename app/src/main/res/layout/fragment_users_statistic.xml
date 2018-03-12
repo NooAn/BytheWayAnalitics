@@ -14,6 +14,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/countNewUsersText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/count_new_users"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/countAllUsersText" />
 
     <TextView
         android:id="@+id/countActiveTripsText"
@@ -23,7 +32,8 @@
         android:text="@string/count_active_trips"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/countAllUsersText" />
+        app:layout_constraintTop_toBottomOf="@id/countNewUsersText" />
+
 
     <TextView
         android:id="@+id/countNotCreatedTripsText"
