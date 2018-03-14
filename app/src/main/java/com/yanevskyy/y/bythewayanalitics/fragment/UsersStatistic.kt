@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.App
 import com.yanevskyy.y.bythewayanalitics.AppPresenter
+import com.yanevskyy.y.bythewayanalitics.OnInstallDates
 import com.yanevskyy.y.bythewayanalitics.R
 import kotlinx.android.synthetic.main.fragment_users_statistic.*
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 class UsersStatistic : Fragment() {
@@ -36,13 +38,21 @@ class UsersStatistic : Fragment() {
                 .forEach { countActiveTrips++ }
         val percentsCountActiveTrips = presenter.calculatePercents(countActiveTrips, presenter.userDao.users.size)
 
-        displayValues(presenter.userDao.users.size, countNotCreatedTrips, percentsNotCreatedTrips, countActiveTrips, percentsCountActiveTrips)
+        App.INSTANCE.dbManager.installDatesInUsers(App.INSTANCE.appPresenter.userDao.users.toMutableList(), object : OnInstallDates {
+            override fun onInstalled() {
+                val timeOneDayAgo = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(1)
+                val countUsersExistOneDay = presenter.userDao.users.count { it.catchingDate > timeOneDayAgo || it.catchingDate == 0L }
+                displayValues(presenter.userDao.users.size, countUsersExistOneDay, countNotCreatedTrips, percentsNotCreatedTrips, countActiveTrips, percentsCountActiveTrips)
+            }
+        })
     }
 
-    private fun displayValues(countAllUsers: Int, countNotCreatedTrips: Int, percentsNotCreatedTrips: Int,
+    private fun displayValues(countAllUsers: Int, countUsersExistOneDay: Int, countNotCreatedTrips: Int, percentsNotCreatedTrips: Int,
                               countActiveTrips: Int, percentsCountActiveTrips: Int) {
         countAllUsersText.text = StringBuilder(context?.getString(R.string.total_quantity_users)).append(" ")
                 .append(countAllUsers.toString())
+        countNewUsersText.text = StringBuilder(context?.getString(R.string.count_new_users)).append(" ")
+                .append(countUsersExistOneDay.toString())
         countNotCreatedTripsText.text = StringBuilder(context?.getString(R.string.not_created_trips)).append(" ")
                 .append(countNotCreatedTrips.toString()).append(" (").append(percentsNotCreatedTrips).append("%)")
         countActiveTripsText.text = StringBuilder(context?.getString(R.string.count_active_trips)).append(" ")
