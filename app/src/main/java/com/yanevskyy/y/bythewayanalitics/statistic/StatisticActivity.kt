@@ -21,6 +21,8 @@ const val LAST_ACTIVITY = "LAST_ACTIVITY"
 
 class StatisticActivity : AppCompatActivity(), StatisticActivityContract, NavigationView.OnNavigationItemSelectedListener {
     val presenter: StatisticActivityPresenter by inject()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,6 +34,16 @@ class StatisticActivity : AppCompatActivity(), StatisticActivityContract, Naviga
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
         supportFragmentManager.beginTransaction().replace(R.id.container, SearchScreen(), LAST_ACTIVITY).addToBackStack(LAST_ACTIVITY).commit()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.attachView(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        presenter.detachView()
     }
 
     // метод использовать. реализацию изменить! убрать хранение с апп.
