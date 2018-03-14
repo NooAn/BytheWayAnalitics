@@ -5,6 +5,10 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+ext {
+    koin_version = '0.9.0'
+}
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -49,6 +53,8 @@ dependencies {
     compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.2'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.22"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compile "org.koin:koin-android:$koin_version"
+    testCompile "org.koin:koin-test:$koin_version"
 }
 repositories {
     mavenCentral()

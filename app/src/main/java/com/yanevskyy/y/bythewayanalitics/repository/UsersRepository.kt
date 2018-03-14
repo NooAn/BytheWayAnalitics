@@ -9,8 +9,8 @@ import java.util.HashMap
 import kotlin.collections.ArrayList
 import kotlin.collections.component1
 
-class UsersRepository {
-    fun requestAllUsers(listener: OnRequestedUsers) {
+class UsersRepository : UserRepositoryContract{
+    override fun requestAllUsers(listener: OnRequestedUsers) {
         FirebaseFirestore.getInstance().collection("users").get().addOnSuccessListener { task ->
             val users = ArrayList<User>()
             task.documents.forEach {
@@ -56,12 +56,5 @@ class UsersRepository {
             }
         }
         return user
-    }
-}
-
-abstract class OnRequestedUsers {
-    abstract fun onSuccessRequested(users: MutableList<User>)
-    fun onFailureRequested(error: Exception) {
-        Log.w(ContentValues.TAG, "Error getting documents.", error)
     }
 }

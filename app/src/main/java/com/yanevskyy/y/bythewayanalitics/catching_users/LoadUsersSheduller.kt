@@ -1,4 +1,4 @@
-package com.yanevskyy.y.bythewayanalitics
+package com.yanevskyy.y.bythewayanalitics.catching_users
 
 import android.app.Notification
 import android.app.NotificationManager
@@ -12,6 +12,7 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.support.v4.app.NotificationCompat
+import com.yanevskyy.y.bythewayanalitics.R
 
 
 const val DAY_TIME = 1000L * 60 * 60 * 24

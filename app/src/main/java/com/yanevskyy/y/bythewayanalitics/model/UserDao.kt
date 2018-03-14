@@ -1,4 +1,4 @@
-package com.yanevskyy.y.bythewayanalitics
+package com.yanevskyy.y.bythewayanalitics.model
 
 /**
  * Created by Y on 09.02.18.
