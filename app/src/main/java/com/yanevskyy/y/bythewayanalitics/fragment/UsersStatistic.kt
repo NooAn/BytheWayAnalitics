@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.R
 import com.yanevskyy.y.bythewayanalitics.catching_users.DbManager
 import com.yanevskyy.y.bythewayanalitics.catching_users.OnInstallDates
-import com.yanevskyy.y.bythewayanalitics.presenter.StatisticPresenter
+import com.yanevskyy.y.bythewayanalitics.statistic.presenter.StatisticActivityPresenter
 import kotlinx.android.synthetic.main.fragment_users_statistic.*
 import org.koin.android.ext.android.inject
 import java.util.*
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
 
 
 class UsersStatistic : Fragment() {
-    val presenter: StatisticPresenter by inject()
+    val presenter: StatisticActivityPresenter by inject()
     private val dbManager: DbManager by inject()
 
 

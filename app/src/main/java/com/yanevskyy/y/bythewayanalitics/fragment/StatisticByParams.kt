@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.firebase.mm.myapplication.Method
-import com.yanevskyy.y.bythewayanalitics.App
-import com.yanevskyy.y.bythewayanalitics.presenter.StatisticPresenter
+import com.yanevskyy.y.bythewayanalitics.statistic.presenter.StatisticActivityPresenter
 import com.yanevskyy.y.bythewayanalitics.R
 import kotlinx.android.synthetic.main.fragment_statistic_by_parameters.*
 import android.widget.SimpleAdapter
@@ -15,7 +14,7 @@ import org.koin.android.ext.android.inject
 
 
 class StatisticByParams : Fragment() {
-    val presenter: StatisticPresenter by inject()
+    val presenter: StatisticActivityPresenter by inject()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =

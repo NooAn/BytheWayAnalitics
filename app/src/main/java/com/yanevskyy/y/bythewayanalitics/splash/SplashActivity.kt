@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.activity.MainActivity
+import com.yanevskyy.y.bythewayanalitics.statistic.StatisticActivity
 import org.koin.android.ext.android.inject
 
 class SplashActivity : AppCompatActivity(), SplashActivityContract {
@@ -28,6 +28,6 @@ class SplashActivity : AppCompatActivity(), SplashActivityContract {
     }
 
     override fun onInstallUsers() {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, StatisticActivity::class.java))
     }
 }

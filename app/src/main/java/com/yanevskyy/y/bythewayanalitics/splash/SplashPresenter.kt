@@ -6,7 +6,7 @@ import com.yanevskyy.y.bythewayanalitics.presenter.BasePresenter
 import com.yanevskyy.y.bythewayanalitics.repository.OnRequestedUsers
 import com.yanevskyy.y.bythewayanalitics.repository.UserRepositoryContract
 
-class SplashPresenter(val userDao: UserDao, private val repository: UserRepositoryContract) : BasePresenter<SplashActivityContract>() {
+class SplashPresenter(userDao: UserDao, private val repository: UserRepositoryContract) : BasePresenter<SplashActivityContract>(userDao) {
 
     fun installAllUsers() {
         repository.requestAllUsers(object : OnRequestedUsers() {

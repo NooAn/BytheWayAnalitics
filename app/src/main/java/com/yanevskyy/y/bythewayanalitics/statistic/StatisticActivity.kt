@@ -1,4 +1,4 @@
-package com.yanevskyy.y.bythewayanalitics.activity
+package com.yanevskyy.y.bythewayanalitics.statistic
 
 
 import android.os.Bundle
@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.yanevskyy.y.bythewayanalitics.R
 import com.yanevskyy.y.bythewayanalitics.fragment.*
-import com.yanevskyy.y.bythewayanalitics.presenter.StatisticPresenter
+import com.yanevskyy.y.bythewayanalitics.statistic.presenter.StatisticActivityPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.koin.android.ext.android.inject
@@ -19,8 +19,8 @@ import java.security.InvalidKeyException
 
 const val LAST_ACTIVITY = "LAST_ACTIVITY"
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    val presenter: StatisticPresenter by inject()
+class StatisticActivity : AppCompatActivity(), StatisticActivityContract, NavigationView.OnNavigationItemSelectedListener {
+    val presenter: StatisticActivityPresenter by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     // метод использовать. реализацию изменить! убрать хранение с апп.
-    fun getUsers() = presenter
+    override fun getUsers() = presenter.userDao.users
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {

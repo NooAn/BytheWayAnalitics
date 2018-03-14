@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.activity.MainActivity
+import com.yanevskyy.y.bythewayanalitics.statistic.StatisticActivity
 import kotlinx.android.synthetic.main.fragment_search.*
 
 /**
@@ -20,7 +20,7 @@ class SearchScreen : android.support.v4.app.Fragment() {
 
         view?.findViewById<Button>(R.id.buttonSearch)?.setOnClickListener {
             val text = textName.text.toString()
-            val stringNewText = (activity as MainActivity).getUsers().userDao.users.filter {
+            val stringNewText = (activity as StatisticActivity).getUsers().filter {
                 it.name.contains(text, ignoreCase = true) || it.lastName.contains(text, ignoreCase = true)
             }.map { it.id }.toString()
             view.findViewById<TextView>(R.id.textId).text = stringNewText

@@ -1,6 +1,8 @@
 package com.yanevskyy.y.bythewayanalitics.presenter
 
-open class BasePresenter<T> {
+import com.yanevskyy.y.bythewayanalitics.model.UserDao
+
+open class BasePresenter<T>(val userDao: UserDao) {
     protected var presentedView: T? = null
 
     fun attachView(view: T){
