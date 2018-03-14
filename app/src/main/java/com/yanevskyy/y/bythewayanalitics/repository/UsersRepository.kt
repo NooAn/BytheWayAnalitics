@@ -10,6 +10,7 @@ import kotlin.collections.ArrayList
 import kotlin.collections.component1
 
 class UsersRepository : UserRepositoryContract{
+
     override fun requestAllUsers(listener: OnRequestedUsers) {
         //FIXME да, это надо вставить Олег, вместо той фигни что ниже :)
         /*
