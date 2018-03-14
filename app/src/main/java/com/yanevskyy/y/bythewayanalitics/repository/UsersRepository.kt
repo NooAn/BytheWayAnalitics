@@ -11,6 +11,16 @@ import kotlin.collections.component1
 
 class UsersRepository : UserRepositoryContract{
     override fun requestAllUsers(listener: OnRequestedUsers) {
+        //FIXME да, это надо вставить Олег, вместо той фигни что ниже :)
+        /*
+                   store.collection(COLLECTION_USERS).get().addOnCompleteListener({ task ->
+                       if (task.isSuccessful) {
+                           val result: MutableList<User> = ArrayList()
+                           for (document in task.result) {
+                               Log.d(TAG, document.id + " => " + document.data)
+                               var user = User()
+                                   user = document.toObject(User::class.java)
+*/
         FirebaseFirestore.getInstance().collection("users").get().addOnSuccessListener { task ->
             val users = ArrayList<User>()
             task.documents.forEach {

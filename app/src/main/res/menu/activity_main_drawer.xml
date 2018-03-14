@@ -17,6 +17,9 @@
             android:id="@+id/users_statistic"
             android:title="@string/users_statistic" />
         <item
+            android:id="@+id/search_by_name"
+            android:title="Search user by name" />
+        <item
             android:id="@+id/social_networks"
             android:title="@string/social_networks" />
         <item
