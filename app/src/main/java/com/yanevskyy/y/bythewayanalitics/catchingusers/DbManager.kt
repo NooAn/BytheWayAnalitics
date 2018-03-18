@@ -1,4 +1,4 @@
-package com.yanevskyy.y.bythewayanalitics.catching_users
+package com.yanevskyy.y.bythewayanalitics.catchingusers
 
 import android.content.ContentValues
 import android.content.Context

@@ -1,4 +1,4 @@
-package com.yanevskyy.y.bythewayanalitics.catching_users
+package com.yanevskyy.y.bythewayanalitics.catchingusers
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -14,7 +14,8 @@ class StartUpBootReceiver : BroadcastReceiver() {
     }
 
     private fun startLoadUsersService(context: Context) {
-        val latencyForStartScheduler = PreferenceManager.getDefaultSharedPreferences(context).getLong("END_START_LOADING_USERS", 0L)
+        val latencyForStartScheduler = PreferenceManager.getDefaultSharedPreferences(context)
+                .getLong("END_START_LOADING_USERS_" + PLANER_LOAD_ID_ON_BOOT, 0L)
                 .let { timeLastRunScheduler ->
                     var planeDelayStartCatching = (timeLastRunScheduler + DAY_TIME) - System.currentTimeMillis()
                     if (planeDelayStartCatching <= 10L) planeDelayStartCatching = 1L

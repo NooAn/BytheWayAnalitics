@@ -55,6 +55,9 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     compile "org.koin:koin-android:$koin_version"
     testCompile "org.koin:koin-test:$koin_version"
+    compile "org.koin:koin-android-architecture:0.9.1"
+    compile "org.koin:koin-core:$koin_version"
+    compile 'com.github.salomonbrys.kodein:kodein:4.1.0'
 }
 repositories {
     mavenCentral()

@@ -1,4 +1,4 @@
-package com.yanevskyy.y.bythewayanalitics.fragment
+package com.yanevskyy.y.bythewayanalitics.statistic.fragment
 
 import android.content.Context
 import android.content.Intent
@@ -122,18 +122,3 @@ class ParseEmails : Fragment() {
 
     suspend fun getUserId(id: Int): TeamUserData = service!!.getUser(id = id).await()
 }
-//        service!!.getUserRx(id = 8906)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(object : SingleObserver<TeamUserData?> {
-//                    override fun onSuccess(user: TeamUserData) {
-//                        Log.e("LOG", "user ${user.toString()}")
-//                    }
-//
-//                    override fun onSubscribe(d: Disposable) {
-//                    }
-//
-//                    override fun onError(e: Throwable) {
-//                        Log.e("LOG", "ERROR", e)
-//                    }
-//                })

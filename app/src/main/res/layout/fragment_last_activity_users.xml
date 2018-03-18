@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.LastActivityUsers">
+    tools:context=".statistic.fragment.LastActivityUsersFragment">
 
     <TextView
         android:id="@+id/text_count_users"

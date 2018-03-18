@@ -9,7 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.fragment.*
+import com.yanevskyy.y.bythewayanalitics.statistic.fragment.*
 import com.yanevskyy.y.bythewayanalitics.statistic.presenter.StatisticActivityPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -33,7 +33,7 @@ class StatisticActivity : AppCompatActivity(), StatisticActivityContract, Naviga
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
-        supportFragmentManager.beginTransaction().replace(R.id.container, SearchScreen(), LAST_ACTIVITY).addToBackStack(LAST_ACTIVITY).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.container, SearchScreenFragment(), LAST_ACTIVITY).addToBackStack(LAST_ACTIVITY).commit()
     }
 
     override fun onResume() {
@@ -47,7 +47,7 @@ class StatisticActivity : AppCompatActivity(), StatisticActivityContract, Naviga
     }
 
     // метод использовать. реализацию изменить! убрать хранение с апп.
-    override fun getUsers() = presenter.userDao.users
+    override fun getUsers() = presenter.usersContainer.users
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -59,16 +59,16 @@ class StatisticActivity : AppCompatActivity(), StatisticActivityContract, Naviga
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val fragment: Fragment = when (item.itemId) {
-            R.id.last_activity_date -> LastActivityUsers()
-            R.id.top_cities -> TopCities()
-            R.id.statistic_by_params -> StatisticByParams()
-            R.id.social_networks -> SocialNetworks()
-            R.id.budget_statistic -> Budget()
-            R.id.users_statistic -> UsersStatistic()
-            R.id.only_phone_number -> OnlyPhoneNumber()
-            R.id.contains_add_information -> AddInformation()
-            R.id.fly_hours -> FlyHours()
-            R.id.search_by_name -> SearchScreen()
+            R.id.last_activity_date -> LastActivityUsersFragment()
+//            R.id.top_cities -> TopCitiesPresenter()
+            R.id.statistic_by_params -> StatisticByParamsFragment()
+            R.id.social_networks -> SocialNetworksFragment()
+            R.id.budget_statistic -> BudgetFragment()
+            R.id.users_statistic -> UsersStatisticFragment()
+            R.id.only_phone_number -> PhoneNumberFragment()
+            R.id.contains_add_information -> AddInformationFragment()
+            R.id.fly_hours -> FlyHoursFragment()
+            R.id.search_by_name -> SearchScreenFragment()
             else -> throw InvalidKeyException()
         }
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment, LAST_ACTIVITY)

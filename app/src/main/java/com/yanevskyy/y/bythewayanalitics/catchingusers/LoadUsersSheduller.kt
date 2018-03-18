@@ -1,4 +1,4 @@
-package com.yanevskyy.y.bythewayanalitics.catching_users
+package com.yanevskyy.y.bythewayanalitics.catchingusers
 
 import android.app.Notification
 import android.app.NotificationManager
@@ -16,7 +16,7 @@ import com.yanevskyy.y.bythewayanalitics.R
 
 
 const val DAY_TIME = 1000L * 60 * 60 * 24
-const val PLANER_LOAD_ID_ON_BOOT = 1255
+const val PLANER_LOAD_ID_ON_BOOT = 1252
 
 class LoadUsersScheduler : JobService() {
     companion object {
