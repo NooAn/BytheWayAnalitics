@@ -60,7 +60,7 @@ class StatisticActivity : AppCompatActivity(), StatisticActivityContract, Naviga
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val fragment: Fragment = when (item.itemId) {
             R.id.last_activity_date -> LastActivityUsersFragment()
-//            R.id.top_cities -> TopCitiesPresenter()
+        // R.id.top_cities -> TopCitiesPresenter()
             R.id.statistic_by_params -> StatisticByParamsFragment()
             R.id.social_networks -> SocialNetworksFragment()
             R.id.budget_statistic -> BudgetFragment()
@@ -69,6 +69,7 @@ class StatisticActivity : AppCompatActivity(), StatisticActivityContract, Naviga
             R.id.contains_add_information -> AddInformationFragment()
             R.id.fly_hours -> FlyHoursFragment()
             R.id.search_by_name -> SearchScreenFragment()
+            R.id.parser_email -> ParseEmails()
             else -> throw InvalidKeyException()
         }
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment, LAST_ACTIVITY)
