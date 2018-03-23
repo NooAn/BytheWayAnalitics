@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentTopCities
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.TopCitiesPresenterContract
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentTopCities
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.TopCitiesPresenterContract
 import kotlinx.android.synthetic.main.fragment_top_cities.*
 import org.koin.android.ext.android.inject
 

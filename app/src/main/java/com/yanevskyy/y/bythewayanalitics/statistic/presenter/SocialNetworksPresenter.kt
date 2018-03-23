@@ -2,9 +2,9 @@ package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 
 import com.firebase.mm.myapplication.SocialNetwork
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentSocialNetworks
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.BaseSomethingPresenterStatistic
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.SomethingPresenterSocialNetworks
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentSocialNetworks
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.BaseSomethingPresenterStatistic
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterSocialNetworks
 
 class SocialNetworksPresenter(usersContainer: UsersContainer) : BaseSomethingPresenterStatistic<SomethingFragmentSocialNetworks>(usersContainer), SomethingPresenterSocialNetworks {
     private var countAnyNetworks = 0

@@ -1,9 +1,9 @@
 package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentAddInformation
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.SomethingPresenterAddInformation
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.BaseSomethingPresenterStatistic
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentAddInformation
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterAddInformation
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.BaseSomethingPresenterStatistic
 
 //class AddInformationPresenter(usersContainer: UsersContainer) : SomethingPresenterAddInformation(usersContainer) {
 class AddInformationPresenter(usersContainer: UsersContainer) : BaseSomethingPresenterStatistic<SomethingFragmentAddInformation>(usersContainer), SomethingPresenterAddInformation {

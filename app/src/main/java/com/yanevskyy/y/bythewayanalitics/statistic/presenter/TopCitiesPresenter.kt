@@ -1,9 +1,9 @@
 package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentTopCities
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.BaseSomethingPresenterStatistic
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.TopCitiesPresenterContract
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentTopCities
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.BaseSomethingPresenterStatistic
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.TopCitiesPresenterContract
 
 class TopCitiesPresenter(usersContainer: UsersContainer) : BaseSomethingPresenterStatistic<SomethingFragmentTopCities>(usersContainer),
         TopCitiesPresenterContract {

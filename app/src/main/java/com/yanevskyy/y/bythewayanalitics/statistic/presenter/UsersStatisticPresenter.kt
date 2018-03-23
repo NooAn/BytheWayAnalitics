@@ -1,9 +1,9 @@
 package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentUsersStatistic
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.BaseSomethingPresenterStatistic
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.UsersStatisticPresenterContract
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentUsersStatistic
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.BaseSomethingPresenterStatistic
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.UsersStatisticPresenterContract
 import java.util.*
 import java.util.concurrent.TimeUnit
 

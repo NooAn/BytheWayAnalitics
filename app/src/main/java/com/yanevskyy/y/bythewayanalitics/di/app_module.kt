@@ -6,7 +6,7 @@ import com.yanevskyy.y.bythewayanalitics.repository.UserRepositoryContract
 import com.yanevskyy.y.bythewayanalitics.repository.UsersRepository
 import com.yanevskyy.y.bythewayanalitics.splash.SplashPresenter
 import com.yanevskyy.y.bythewayanalitics.statistic.presenter.*
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.*
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.*
 import org.koin.dsl.module.applicationContext
 
 val usersModule = applicationContext {

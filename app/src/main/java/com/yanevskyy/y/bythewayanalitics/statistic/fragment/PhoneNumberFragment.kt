@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentPhoneNumber
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentPhoneNumber
 import com.yanevskyy.y.bythewayanalitics.statistic.presenter.OnlyPhoneNumberPresenter
 import kotlinx.android.synthetic.main.fragment_only_phone_number.*
 import org.koin.android.ext.android.inject

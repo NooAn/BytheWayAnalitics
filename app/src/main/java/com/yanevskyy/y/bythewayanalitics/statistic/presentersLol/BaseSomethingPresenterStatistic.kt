@@ -1,4 +1,4 @@
-package com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts
+package com.yanevskyy.y.bythewayanalitics.statistic.presentersLol
 
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
 import com.yanevskyy.y.bythewayanalitics.presenter.BasePresenter

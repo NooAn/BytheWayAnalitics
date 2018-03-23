@@ -1,7 +1,7 @@
 package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.SomethingPresenterBudget
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterBudget
 
 class BudgetPresenter(usersContainer: UsersContainer) : SomethingPresenterBudget(usersContainer) {
 

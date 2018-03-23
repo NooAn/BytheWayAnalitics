@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentSearchScreen
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.SomethingPresenterSearchScreen
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentSearchScreen
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterSearchScreen
 import kotlinx.android.synthetic.main.fragment_search.*
 import org.koin.android.ext.android.inject
 

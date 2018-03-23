@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentFlyHours
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.SomethingPresenterFlyHours
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentFlyHours
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterFlyHours
 import kotlinx.android.synthetic.main.fragment_flight_hours.*
 import org.koin.android.ext.android.inject
 

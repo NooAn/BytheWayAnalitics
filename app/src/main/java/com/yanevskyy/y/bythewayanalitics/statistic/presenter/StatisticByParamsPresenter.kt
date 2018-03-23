@@ -3,7 +3,7 @@ package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 import com.firebase.mm.myapplication.Method
 import com.firebase.mm.myapplication.User
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.StatisticByParamsPresenterContract
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.StatisticByParamsPresenterContract
 
 class StatisticByParamsPresenter(usersContainer: UsersContainer) : StatisticByParamsPresenterContract(usersContainer) {
     private var countSexM = 0

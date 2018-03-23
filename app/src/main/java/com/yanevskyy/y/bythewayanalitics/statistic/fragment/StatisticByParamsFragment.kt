@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SimpleAdapter
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentStatisticByParams
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.StatisticByParamsPresenterContract
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentStatisticByParams
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.StatisticByParamsPresenterContract
 import kotlinx.android.synthetic.main.fragment_statistic_by_parameters.*
 import org.koin.android.ext.android.inject
 

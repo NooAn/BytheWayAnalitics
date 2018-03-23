@@ -11,8 +11,8 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentLastActivityUsers
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.SomethingPresenterLastActivityUsers
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentLastActivityUsers
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterLastActivityUsers
 import kotlinx.android.synthetic.main.fragment_last_activity_users.*
 import org.koin.android.ext.android.inject
 import java.util.*

@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.firebase.mm.myapplication.SocialNetwork
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentSocialNetworks
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.SomethingPresenterSocialNetworks
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentSocialNetworks
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterSocialNetworks
 import kotlinx.android.synthetic.main.fragment_social_networks.*
 import org.koin.android.ext.android.inject
 

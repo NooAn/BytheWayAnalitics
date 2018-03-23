@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentUsersStatistic
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.UsersStatisticPresenterContract
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentUsersStatistic
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.UsersStatisticPresenterContract
 import kotlinx.android.synthetic.main.fragment_users_statistic.*
 import org.koin.android.ext.android.inject
 

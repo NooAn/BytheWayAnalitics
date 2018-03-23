@@ -1,9 +1,9 @@
 package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentPhoneNumber
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.BaseSomethingPresenterStatistic
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.SomethingPresenterOnlyPhoneNumber
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentPhoneNumber
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.BaseSomethingPresenterStatistic
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterOnlyPhoneNumber
 
 class OnlyPhoneNumberPresenter(usersContainer: UsersContainer) : BaseSomethingPresenterStatistic<SomethingFragmentPhoneNumber>(usersContainer), SomethingPresenterOnlyPhoneNumber {
     override fun calculateCountUsersWithNumber() {

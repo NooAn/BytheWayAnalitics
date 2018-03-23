@@ -3,9 +3,9 @@ package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 import android.content.Context
 import android.content.Intent
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.fragmentcontracts.SomethingFragmentLastActivityUsers
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.BaseSomethingPresenterStatistic
-import com.yanevskyy.y.bythewayanalitics.statistic.presentercontracts.SomethingPresenterLastActivityUsers
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentLastActivityUsers
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.BaseSomethingPresenterStatistic
+import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterLastActivityUsers
 
 class LastActivityUsersPresenter(usersContainer: UsersContainer) : BaseSomethingPresenterStatistic<SomethingFragmentLastActivityUsers>(usersContainer), SomethingPresenterLastActivityUsers {
     private var namesNotActiveUsers: MutableList<String> = ArrayList()
