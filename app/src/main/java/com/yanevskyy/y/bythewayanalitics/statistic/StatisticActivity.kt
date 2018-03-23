@@ -22,7 +22,6 @@ const val LAST_ACTIVITY = "LAST_ACTIVITY"
 class StatisticActivity : AppCompatActivity(), StatisticActivityContract, NavigationView.OnNavigationItemSelectedListener {
     val presenter: StatisticActivityPresenter by inject()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -46,8 +45,6 @@ class StatisticActivity : AppCompatActivity(), StatisticActivityContract, Naviga
         presenter.detachView()
     }
 
-    // метод использовать. реализацию изменить! убрать хранение с апп.
-    override fun getUsers() = presenter.usersContainer.users
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -74,6 +71,7 @@ class StatisticActivity : AppCompatActivity(), StatisticActivityContract, Naviga
         }
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment, LAST_ACTIVITY)
                 .addToBackStack(LAST_ACTIVITY).commit()
+
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
