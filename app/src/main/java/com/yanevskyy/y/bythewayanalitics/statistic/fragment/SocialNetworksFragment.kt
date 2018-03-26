@@ -41,11 +41,11 @@ class SocialNetworksFragment : BaseFragment<FragmentSocialNetworksView>(), Fragm
 
     private fun delineateViewByNetwork(networkName: String): TextView? {
         return when (networkName) {
-            in SocialNetwork.CS.name -> countCSText
-            in SocialNetwork.FB.name -> countFBText
-            in SocialNetwork.TG.name -> countTGText
-            in SocialNetwork.VK.name -> countVKText
-            in SocialNetwork.WHATSAPP.name -> countWhatsAppText
+            in SocialNetwork.CS.link -> countCSText
+            in SocialNetwork.FB.link -> countFBText
+            in SocialNetwork.TG.link -> countTGText
+            in SocialNetwork.VK.link -> countVKText
+            in SocialNetwork.WHATSAPP.link -> countWhatsAppText
             else -> null
         }
     }
