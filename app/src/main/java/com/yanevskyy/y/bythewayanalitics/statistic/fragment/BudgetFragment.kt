@@ -5,14 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentBudget
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterBudget
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.FragmentBudgetView
+import com.yanevskyy.y.bythewayanalitics.statistic.presenter.BudgetPresenter
 import kotlinx.android.synthetic.main.fragment_budget.*
 import org.koin.android.ext.android.inject
 
-class BudgetFragment : BaseFragment<SomethingFragmentBudget>(), SomethingFragmentBudget {
-    override val presenter: SomethingPresenterBudget by inject()
-    override val view: SomethingFragmentBudget = this
+class BudgetFragment : BaseFragment<FragmentBudgetView>(), FragmentBudgetView {
+    override val presenter: BudgetPresenter by inject()
+    override val view: FragmentBudgetView = this
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
             inflater.inflate(R.layout.fragment_budget, container, false)

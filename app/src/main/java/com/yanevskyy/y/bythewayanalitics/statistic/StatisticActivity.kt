@@ -10,17 +10,14 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.yanevskyy.y.bythewayanalitics.R
 import com.yanevskyy.y.bythewayanalitics.statistic.fragment.*
-import com.yanevskyy.y.bythewayanalitics.statistic.presenter.StatisticActivityPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import org.koin.android.ext.android.inject
 import java.security.InvalidKeyException
 
 
 const val LAST_ACTIVITY = "LAST_ACTIVITY"
 
-class StatisticActivity : AppCompatActivity(), StatisticActivityContract, NavigationView.OnNavigationItemSelectedListener {
-    val presenter: StatisticActivityPresenter by inject()
+class StatisticActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,17 +32,6 @@ class StatisticActivity : AppCompatActivity(), StatisticActivityContract, Naviga
         supportFragmentManager.beginTransaction().replace(R.id.container, SearchScreenFragment(), LAST_ACTIVITY).addToBackStack(LAST_ACTIVITY).commit()
     }
 
-    override fun onResume() {
-        super.onResume()
-        presenter.attachView(this)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        presenter.detachView()
-    }
-
-
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -57,13 +43,13 @@ class StatisticActivity : AppCompatActivity(), StatisticActivityContract, Naviga
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val fragment: Fragment = when (item.itemId) {
             R.id.last_activity_date -> LastActivityUsersFragment()
-        // R.id.top_cities -> TopCitiesPresenter()
+            R.id.top_cities -> TopCitiesFragment()
             R.id.statistic_by_params -> StatisticByParamsFragment()
             R.id.social_networks -> SocialNetworksFragment()
             R.id.budget_statistic -> BudgetFragment()
             R.id.users_statistic -> UsersStatisticFragment()
             R.id.only_phone_number -> PhoneNumberFragment()
-            R.id.contains_add_information -> AddInformationFragment()
+            R.id.contains_add_information -> FragmentAddInformation()
             R.id.fly_hours -> FlyHoursFragment()
             R.id.search_by_name -> SearchScreenFragment()
             R.id.parser_email -> ParseEmails()

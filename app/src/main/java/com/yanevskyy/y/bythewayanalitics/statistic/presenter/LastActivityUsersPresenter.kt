@@ -1,26 +1,19 @@
 package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 
-import android.content.Context
-import android.content.Intent
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentLastActivityUsers
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.BaseSomethingPresenterStatistic
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterLastActivityUsers
+import com.yanevskyy.y.bythewayanalitics.presenter.BasePresenter
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.FragmentLastActivityUsersView
 
-class LastActivityUsersPresenter(usersContainer: UsersContainer) : BaseSomethingPresenterStatistic<SomethingFragmentLastActivityUsers>(usersContainer), SomethingPresenterLastActivityUsers {
-    private var namesNotActiveUsers: MutableList<String> = ArrayList()
-    private var emailsNotActiveUsers: MutableList<String> = ArrayList()
+class LastActivityUsersPresenter(usersContainer: UsersContainer) : BasePresenter<FragmentLastActivityUsersView>(usersContainer) {
+    private var namesNotActiveUsers: MutableList<String> = mutableListOf()
+    private var emailsNotActiveUsers: MutableList<String> = mutableListOf()
 
-    override fun sendEmail(contextFrom: Context) {
-        val intent = Intent(Intent.ACTION_SEND)
-        intent.type = "message/rfc822"
-        intent.putExtra(Intent.EXTRA_EMAIL, emailsNotActiveUsers.toTypedArray())
-        intent.putExtra(Intent.EXTRA_TEXT, "Body of email")
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) // this will make such that when user returns to your app, your app is displayed, instead of the email app.
-        contextFrom.startActivity(intent)
+
+    fun sendEmailToNotActiveUsers() {
+        presentedView?.senEmailToSelectedUsers(emailsNotActiveUsers)
     }
 
-    override fun installNotActiveUsers(minTimeLastActivityUser: Long) {
+    fun installNotActiveUsers(minTimeLastActivityUser: Long) {
         emailsNotActiveUsers.clear()
         namesNotActiveUsers.clear()
         for (user in usersContainer.users) {
@@ -35,14 +28,12 @@ class LastActivityUsersPresenter(usersContainer: UsersContainer) : BaseSomething
                 }
             }
         }
+        presentedView?.displayNamesNotActiveUsers(namesNotActiveUsers)
     }
 
-    override fun removeNotActiveUser(position: Int) {
+    fun removeNotActiveUser(position: Int) {
         emailsNotActiveUsers.removeAt(position)
         namesNotActiveUsers.removeAt(position)
+        presentedView?.displayCountActiveUsers(emailsNotActiveUsers.size)
     }
-
-    override fun namesNotActiveUsers(): List<String> = namesNotActiveUsers
-
-    override fun emailsNotActiveUsers(): List<String> = emailsNotActiveUsers
 }

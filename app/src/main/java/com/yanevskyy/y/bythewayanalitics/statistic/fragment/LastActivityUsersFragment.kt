@@ -2,6 +2,7 @@ package com.yanevskyy.y.bythewayanalitics.statistic.fragment
 
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -11,16 +12,16 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentLastActivityUsers
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterLastActivityUsers
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.FragmentLastActivityUsersView
+import com.yanevskyy.y.bythewayanalitics.statistic.presenter.LastActivityUsersPresenter
 import kotlinx.android.synthetic.main.fragment_last_activity_users.*
 import org.koin.android.ext.android.inject
 import java.util.*
 
 
-class LastActivityUsersFragment : BaseFragment<SomethingFragmentLastActivityUsers>(), SomethingFragmentLastActivityUsers {
-    override val presenter: SomethingPresenterLastActivityUsers by inject()
-    override val view: SomethingFragmentLastActivityUsers = this
+class LastActivityUsersFragment : BaseFragment<FragmentLastActivityUsersView>(), FragmentLastActivityUsersView {
+    override val presenter: LastActivityUsersPresenter by inject()
+    override val view: FragmentLastActivityUsersView = this
     private lateinit var calendar: Calendar
 
 
@@ -32,7 +33,38 @@ class LastActivityUsersFragment : BaseFragment<SomethingFragmentLastActivityUser
 
         textDateActive.setOnClickListener { showDateDialog() }
 
-        startSendOnSelectedEmails.setOnClickListener { context?.let { context -> presenter.sendEmail(context) } }
+        startSendOnSelectedEmails.setOnClickListener { presenter.sendEmailToNotActiveUsers() }
+    }
+
+    override fun senEmailToSelectedUsers(users: List<String>) {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "message/rfc822"
+        intent.putExtra(Intent.EXTRA_EMAIL, users.toTypedArray())
+        intent.putExtra(Intent.EXTRA_TEXT, "Body of email")
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+
+    override fun displayNamesNotActiveUsers(names: List<String>) {
+        userList.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, names)
+
+        userList.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, names)
+        userList.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+            removeNotActiveUser(position)
+        }
+    }
+
+
+    private fun removeNotActiveUser(position: Int) {
+        presenter.removeNotActiveUser(position)
+    }
+
+    override fun displayCountActiveUsers(count: Int) {
+        text_count_users.text = StringBuilder("колличество пользователей: ").append(count).toString()
+    }
+
+    private fun updateActiveUsers(minTimeLastActivityUser: Long) {
+        presenter.installNotActiveUsers(minTimeLastActivityUser)
     }
 
     private fun showDateDialog() {
@@ -49,20 +81,6 @@ class LastActivityUsersFragment : BaseFragment<SomethingFragmentLastActivityUser
 
                 val calendarTimeLastActivityUser = Calendar.getInstance()
                 calendarTimeLastActivityUser.set(year, month, dayOfMonth)
-                updateActiveUsers(calendarTimeLastActivityUser.time.time)
-                userList.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, presenter.namesNotActiveUsers())
-                userList.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-                    updateNotActiveUsersAdapter(position)
-                }
+                updateActiveUsers(calendarTimeLastActivityUser.timeInMillis)
             }
-
-    private fun updateNotActiveUsersAdapter(position: Int) {
-        presenter.removeNotActiveUser(position)
-        userList.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, presenter.namesNotActiveUsers())
-    }
-
-    private fun updateActiveUsers(minTimeLastActivityUser: Long) {
-        presenter.installNotActiveUsers(minTimeLastActivityUser)
-        text_count_users.text = StringBuilder("колличество пользователей: ").append((presenter.emailsNotActiveUsers().size).toString())
-    }
 }

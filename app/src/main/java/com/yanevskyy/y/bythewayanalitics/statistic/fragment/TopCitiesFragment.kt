@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentTopCities
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.TopCitiesPresenterContract
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.FragmentTopCitiesView
+import com.yanevskyy.y.bythewayanalitics.statistic.presenter.TopCitiesPresenter
 import kotlinx.android.synthetic.main.fragment_top_cities.*
 import org.koin.android.ext.android.inject
 
-class TopCitiesFragment : BaseFragment<SomethingFragmentTopCities>(), SomethingFragmentTopCities {
-    override val presenter: TopCitiesPresenterContract by inject()
-    override val view: SomethingFragmentTopCities = this
+class TopCitiesFragment : BaseFragment<FragmentTopCitiesView>(), FragmentTopCitiesView {
+    override val presenter: TopCitiesPresenter by inject()
+    override val view: FragmentTopCitiesView = this
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =

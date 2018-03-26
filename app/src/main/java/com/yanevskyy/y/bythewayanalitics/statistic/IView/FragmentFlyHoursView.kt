@@ -1,5 +1,5 @@
 package com.yanevskyy.y.bythewayanalitics.statistic.IView
 
-interface SomethingFragmentFlyHours {
+interface FragmentFlyHoursView {
     fun showCountHours(countHours: Int)
 }

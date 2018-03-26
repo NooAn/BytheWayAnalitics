@@ -3,9 +3,10 @@ package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 import com.firebase.mm.myapplication.Method
 import com.firebase.mm.myapplication.User
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.StatisticByParamsPresenterContract
+import com.yanevskyy.y.bythewayanalitics.presenter.BasePresenter
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.FragmentStatisticByParamsView
 
-class StatisticByParamsPresenter(usersContainer: UsersContainer) : StatisticByParamsPresenterContract(usersContainer) {
+class StatisticByParamsPresenter(usersContainer: UsersContainer) : BasePresenter<FragmentStatisticByParamsView>(usersContainer) {
     private var countSexM = 0
     private var countSexW = 0
     private var countSexAny = 0
@@ -14,7 +15,8 @@ class StatisticByParamsPresenter(usersContainer: UsersContainer) : StatisticByPa
     private val countAges = mutableMapOf(ONE_TO_NINE to 0, TEN_TO_NINETEEN to 0, TWENTY_TO_TWENTY_NINE to 0, THIRTY_TO_THIRTY_NINE to 0,
             FORTY_TO_FORTY_NINE to 0, FIFTY_TO_FIFTY_NINE to 0, SIXTY_TO_SIXTY_NINE to 0, SEVENTY_TO_EIGHTY to 0)
 
-    override fun calculateSexesAndMethodsAndYears() {
+
+    fun calculateSexesAndMethodsAndYears() {
         usersContainer.users.forEach { user ->
             delineateSex(user)
             delineateMethods(user)

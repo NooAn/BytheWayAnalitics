@@ -1,11 +1,12 @@
 package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterBudget
+import com.yanevskyy.y.bythewayanalitics.presenter.BasePresenter
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.FragmentBudgetView
 
-class BudgetPresenter(usersContainer: UsersContainer) : SomethingPresenterBudget(usersContainer) {
+class BudgetPresenter(usersContainer: UsersContainer) : BasePresenter<FragmentBudgetView>(usersContainer) {
 
-    override fun calculateCountsAndPercentsBudgets() {
+    fun calculateCountsAndPercentsBudgets() {
         var totalBudget = 0L
         var maxBudget = Long.MIN_VALUE
         var minBudget = Long.MAX_VALUE

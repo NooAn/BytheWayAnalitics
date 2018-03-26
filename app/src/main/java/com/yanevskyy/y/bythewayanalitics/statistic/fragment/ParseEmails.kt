@@ -32,7 +32,6 @@ import java.util.concurrent.atomic.AtomicInteger
 
 class ParseEmails : Fragment() {
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.fragment_parse_emails,
                 container, false)
@@ -40,7 +39,7 @@ class ParseEmails : Fragment() {
             sendRequest()
         }
         view?.findViewById<Button>(R.id.button2)?.setOnClickListener {
-            var text = list.toString()
+            val text = list.toString()
             writteText(list)
             saveDataAndSend(text)
         }

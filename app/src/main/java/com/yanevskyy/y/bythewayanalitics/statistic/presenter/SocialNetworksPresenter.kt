@@ -2,16 +2,17 @@ package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 
 import com.firebase.mm.myapplication.SocialNetwork
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentSocialNetworks
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.BaseSomethingPresenterStatistic
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterSocialNetworks
+import com.yanevskyy.y.bythewayanalitics.presenter.BasePresenter
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.FragmentSocialNetworksView
+import com.yanevskyy.y.bythewayanalitics.statistic.calculatePercents
 
-class SocialNetworksPresenter(usersContainer: UsersContainer) : BaseSomethingPresenterStatistic<SomethingFragmentSocialNetworks>(usersContainer), SomethingPresenterSocialNetworks {
+class SocialNetworksPresenter(usersContainer: UsersContainer) : BasePresenter<FragmentSocialNetworksView>(usersContainer) {
     private var countAnyNetworks = 0
     private val countsNetworks = mutableMapOf<String, Int>()
     private val percentsNetworks = mutableMapOf<String, Int>()
 
-    override fun calculateNetworks() {
+
+    fun calculateNetworks() {
         SocialNetwork.values().forEach { network -> countsNetworks[network.name] = 0 }
         calculateCountEachNetwork()
         calculatePercentsEachNetworks()

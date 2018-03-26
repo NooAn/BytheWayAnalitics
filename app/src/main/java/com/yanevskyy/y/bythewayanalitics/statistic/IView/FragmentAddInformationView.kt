@@ -1,5 +1,5 @@
 package com.yanevskyy.y.bythewayanalitics.statistic.IView
 
-interface SomethingFragmentAddInformation {
+interface FragmentAddInformationView {
     fun showCountInfo(countInfo: Int)
 }

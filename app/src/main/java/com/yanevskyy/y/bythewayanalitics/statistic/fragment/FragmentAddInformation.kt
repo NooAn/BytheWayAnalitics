@@ -5,14 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentAddInformation
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterAddInformation
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.FragmentAddInformationView
+import com.yanevskyy.y.bythewayanalitics.statistic.presenter.AddInformationPresenter
 import kotlinx.android.synthetic.main.fragment_add_info.*
 import org.koin.android.ext.android.inject
 
-class AddInformationFragment : BaseFragment<SomethingFragmentAddInformation>(), SomethingFragmentAddInformation {
-    override val presenter: SomethingPresenterAddInformation by inject()
-    override val view: SomethingFragmentAddInformation = this
+class FragmentAddInformation : BaseFragment<FragmentAddInformationView>(), FragmentAddInformationView {
+    override val presenter: AddInformationPresenter by inject()
+    override val view: FragmentAddInformationView = this
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
             inflater.inflate(R.layout.fragment_add_info, container, false)

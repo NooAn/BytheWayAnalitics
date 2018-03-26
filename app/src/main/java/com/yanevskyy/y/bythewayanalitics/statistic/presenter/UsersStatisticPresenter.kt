@@ -1,16 +1,16 @@
 package com.yanevskyy.y.bythewayanalitics.statistic.presenter
 
+import android.util.Log
 import com.yanevskyy.y.bythewayanalitics.model.UsersContainer
-import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentUsersStatistic
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.BaseSomethingPresenterStatistic
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.UsersStatisticPresenterContract
+import com.yanevskyy.y.bythewayanalitics.presenter.BasePresenter
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.FragmentUsersStatisticView
+import com.yanevskyy.y.bythewayanalitics.statistic.calculatePercents
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-class UsersStatisticPresenter(usersContainer: UsersContainer) : BaseSomethingPresenterStatistic<SomethingFragmentUsersStatistic>(usersContainer),
-        UsersStatisticPresenterContract {
+class UsersStatisticPresenter(usersContainer: UsersContainer) : BasePresenter<FragmentUsersStatisticView>(usersContainer) {
 
-    override fun calculateStatistic() {
+    fun calculateStatistic() {
         var countNotCreatedTrips = 0
         var countActiveTrips = 0
         usersContainer.users.filter { user -> user.cities.isEmpty() }.forEach { countNotCreatedTrips++ }
@@ -19,6 +19,7 @@ class UsersStatisticPresenter(usersContainer: UsersContainer) : BaseSomethingPre
         val currentTime = Calendar.getInstance().timeInMillis - (1000 * 60 * 60 * 24)
         usersContainer.users
                 .filter { user ->
+                    Log.d("tag", "start_date: " + user.dates["start_date"])
                     user.dates["start_date"]?.let { it > currentTime }
                             ?: (user.dates["end_date"]?.let { it > currentTime } ?: false)
                 }

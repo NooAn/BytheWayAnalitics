@@ -6,14 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SimpleAdapter
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentStatisticByParams
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.StatisticByParamsPresenterContract
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.FragmentStatisticByParamsView
+import com.yanevskyy.y.bythewayanalitics.statistic.presenter.StatisticByParamsPresenter
 import kotlinx.android.synthetic.main.fragment_statistic_by_parameters.*
 import org.koin.android.ext.android.inject
 
-class StatisticByParamsFragment : BaseFragment<SomethingFragmentStatisticByParams>(), SomethingFragmentStatisticByParams {
-    override val presenter: StatisticByParamsPresenterContract by inject()
-    override val view: SomethingFragmentStatisticByParams = this
+class StatisticByParamsFragment : BaseFragment<FragmentStatisticByParamsView>(), FragmentStatisticByParamsView {
+    override val presenter: StatisticByParamsPresenter by inject()
+    override val view: FragmentStatisticByParamsView = this
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
             inflater.inflate(R.layout.fragment_statistic_by_parameters, container, false)

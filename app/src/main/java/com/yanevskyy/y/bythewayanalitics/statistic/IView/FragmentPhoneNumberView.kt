@@ -1,5 +1,5 @@
 package com.yanevskyy.y.bythewayanalitics.statistic.IView
 
-interface SomethingFragmentPhoneNumber {
+interface FragmentPhoneNumberView {
     fun displayCountUsersWithNumbers(countOnlyPhoneNumber: Int)
 }

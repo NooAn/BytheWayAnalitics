@@ -7,14 +7,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.firebase.mm.myapplication.SocialNetwork
 import com.yanevskyy.y.bythewayanalitics.R
-import com.yanevskyy.y.bythewayanalitics.statistic.IView.SomethingFragmentSocialNetworks
-import com.yanevskyy.y.bythewayanalitics.statistic.presentersLol.SomethingPresenterSocialNetworks
+import com.yanevskyy.y.bythewayanalitics.statistic.IView.FragmentSocialNetworksView
+import com.yanevskyy.y.bythewayanalitics.statistic.presenter.SocialNetworksPresenter
 import kotlinx.android.synthetic.main.fragment_social_networks.*
 import org.koin.android.ext.android.inject
 
-class SocialNetworksFragment : BaseFragment<SomethingFragmentSocialNetworks>(), SomethingFragmentSocialNetworks {
-    override val presenter: SomethingPresenterSocialNetworks by inject()
-    override val view: SomethingFragmentSocialNetworks = this
+class SocialNetworksFragment : BaseFragment<FragmentSocialNetworksView>(), FragmentSocialNetworksView {
+    override val presenter: SocialNetworksPresenter by inject()
+    override val view: FragmentSocialNetworksView = this
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
             inflater.inflate(R.layout.fragment_social_networks, container, false)
@@ -23,13 +24,13 @@ class SocialNetworksFragment : BaseFragment<SomethingFragmentSocialNetworks>(), 
         presenter.calculateNetworks()
     }
 
-    override fun showNetworks(countAnyNetworks: Int, countsNetworks: Map<String, Int>, percentsNetworks: Map<String, Int>){
+    override fun showNetworks(countAnyNetworks: Int, countsNetworks: Map<String, Int>, percentsNetworks: Map<String, Int>) {
         countAnyNetworkText.text = StringBuilder(context?.getString(R.string.contains_any_networks)).append(" ")
                 .append(countAnyNetworks)
         displayCountEachNetwork(countsNetworks, percentsNetworks)
     }
 
-    private fun displayCountEachNetwork( countsNetworks: Map<String, Int>, percentsNetworks: Map<String, Int>) {
+    private fun displayCountEachNetwork(countsNetworks: Map<String, Int>, percentsNetworks: Map<String, Int>) {
         countsNetworks.forEach { networkCountPair ->
             percentsNetworks[networkCountPair.key]?.let { percentsNetworkPair ->
                 delineateViewByNetwork(networkCountPair.key)?.text = StringBuilder(networkCountPair.key).append(": ")
