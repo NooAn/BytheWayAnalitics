@@ -6,5 +6,5 @@ interface FragmentLastActivityUsersView {
 
     fun displayNamesNotActiveUsers(names: List<String>)
 
-    fun displayCountActiveUsers(count: Int)
+//    fun displayCountActiveUsers(count: Int)
 }

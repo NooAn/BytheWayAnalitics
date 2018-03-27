@@ -29,9 +29,9 @@ class LastActivityUsersFragment : BaseFragment<FragmentLastActivityUsersView>(),
             inflater.inflate(R.layout.fragment_last_activity_users, container, false)
 
     override fun startWork() {
-        updateActiveUsers(System.currentTimeMillis())
+        updateNotActiveUsers(System.currentTimeMillis())
 
-        textDateActive.setOnClickListener { showDateDialog() }
+        textDateActive.setOnClickListener { showMinDateLogInNotActiveUsersDialog() }
 
         startSendOnSelectedEmails.setOnClickListener { presenter.sendEmailToNotActiveUsers() }
     }
@@ -52,37 +52,29 @@ class LastActivityUsersFragment : BaseFragment<FragmentLastActivityUsersView>(),
 
         userList.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, names)
         userList.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            removeNotActiveUser(position)
+            presenter.removeNotActiveUser(position)
         }
     }
 
 
-    private fun removeNotActiveUser(position: Int) {
-        presenter.removeNotActiveUser(position)
-    }
-
-    override fun displayCountActiveUsers(count: Int) {
-        text_count_users.text = StringBuilder("колличество пользователей: ").append(count).toString()
-    }
-
-    private fun updateActiveUsers(minTimeLastActivityUser: Long) {
+    private fun updateNotActiveUsers(minTimeLastActivityUser: Long) {
         presenter.installNotActiveUsers(minTimeLastActivityUser)
     }
 
-    private fun showDateDialog() {
+    private fun showMinDateLogInNotActiveUsersDialog() {
         calendar = Calendar.getInstance()
-        val dialog = DatePickerDialog(context, android.R.style.Theme_Holo_Light_Dialog_MinWidth, prepareDateListener(),
+        val dialog = DatePickerDialog(context, android.R.style.Theme_Holo_Light_Dialog_MinWidth, prepareMinDateLogInNotActiveUsersListener(),
                 calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
     }
 
-    private fun prepareDateListener(): DatePickerDialog.OnDateSetListener =
+    private fun prepareMinDateLogInNotActiveUsersListener(): DatePickerDialog.OnDateSetListener =
             DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                 textDateActive.text = StringBuilder(dayOfMonth.toString()).append("/").append(month + 1).append("/").append(year)
 
                 val calendarTimeLastActivityUser = Calendar.getInstance()
                 calendarTimeLastActivityUser.set(year, month, dayOfMonth)
-                updateActiveUsers(calendarTimeLastActivityUser.timeInMillis)
+                updateNotActiveUsers(calendarTimeLastActivityUser.timeInMillis)
             }
 }

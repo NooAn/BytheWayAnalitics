@@ -24,7 +24,10 @@ class LastActivityUsersPresenter(usersContainer: UsersContainer) : BasePresenter
                 val email = user.email
                 if (email.isNotEmpty() && !email.equals("null", true)) {
                     emailsNotActiveUsers.add(user.email)
-                    namesNotActiveUsers.add("$name $lastName : $email")
+                    if (lastName.trim().isNotEmpty() || name.trim().isNotEmpty())
+                        namesNotActiveUsers.add("$name $lastName : $email")
+                    else
+                        namesNotActiveUsers.add(email)
                 }
             }
         }
@@ -34,6 +37,6 @@ class LastActivityUsersPresenter(usersContainer: UsersContainer) : BasePresenter
     fun removeNotActiveUser(position: Int) {
         emailsNotActiveUsers.removeAt(position)
         namesNotActiveUsers.removeAt(position)
-        presentedView?.displayCountActiveUsers(emailsNotActiveUsers.size)
+        presentedView?.displayNamesNotActiveUsers(namesNotActiveUsers)
     }
 }
