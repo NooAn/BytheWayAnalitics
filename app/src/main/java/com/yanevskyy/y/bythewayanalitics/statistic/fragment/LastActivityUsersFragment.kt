@@ -46,6 +46,8 @@ class LastActivityUsersFragment : BaseFragment<FragmentLastActivityUsersView>(),
     }
 
     override fun displayNamesNotActiveUsers(names: List<String>) {
+        text_count_users.text = StringBuilder("колличество пользователей: ").append(names.count())
+
         userList.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, names)
 
         userList.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, names)
