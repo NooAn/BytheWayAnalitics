@@ -4,7 +4,7 @@ import android.content.ContentValues
 import android.util.Log
 import com.firebase.mm.myapplication.User
 
-open interface UserRepositoryContract {
+interface UserRepositoryContract {
     fun requestAllUsers(listener: OnRequestedUsers)
 }
 
