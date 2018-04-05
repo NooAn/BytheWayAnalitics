@@ -53,6 +53,7 @@ class StatisticActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             R.id.fly_hours -> FlyHoursFragment()
             R.id.search_by_name -> SearchScreenFragment()
             R.id.parser_email -> ParseEmails()
+            R.id.tokens -> FragmentCountTokens()
             else -> throw InvalidKeyException()
         }
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment, LAST_ACTIVITY)

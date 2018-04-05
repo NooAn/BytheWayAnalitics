@@ -17,6 +17,7 @@ val servicesModule = applicationContext {
 val presenterModule = applicationContext {
     bean { SplashPresenter(get(), get(), get()) }
     bean { BudgetPresenter(get()) }
+    bean { CountTokensPresenter(get()) }
     bean { SearchScreenPresenter(get()) }
     bean { OnlyPhoneNumberPresenter(get()) }
     bean { LastActivityUsersPresenter(get()) }

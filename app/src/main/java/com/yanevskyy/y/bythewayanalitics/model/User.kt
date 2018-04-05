@@ -55,6 +55,7 @@ data class User(var name: String = "",
                 var socialNetwork: HashMap<String, String> = hashMapOf(),
                 var data: Long = 0,
                 var urlPhoto: String = "https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg",
+                var token: String = "",
                 var catchingDate: Long = 0L) : Serializable
 
 

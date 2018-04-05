@@ -39,5 +39,6 @@
     <string name="groups_users_by_age">группы пользователей по возрасту</string>
     <string name="count_sexes">количество пользователей каждого пола:</string>
     <string name="count_new_users">колличество пользователей за последние 24 часа:</string>
+    <string name="tokens">токены</string>
 
 </resources>
