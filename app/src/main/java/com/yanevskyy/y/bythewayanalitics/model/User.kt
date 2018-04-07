@@ -62,3 +62,5 @@ data class User(var name: String = "",
 data class TeamUser(val email: String, val is_robot: String, val is_manager: String, val IsAgent: String, val is_test: String)
 
 data class TeamUserData(val IsSuccess: Boolean, val InUser: TeamUser)
+
+const val START_DATE_TRIP = "start_date"

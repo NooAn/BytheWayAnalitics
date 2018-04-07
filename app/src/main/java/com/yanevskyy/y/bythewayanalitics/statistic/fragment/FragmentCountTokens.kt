@@ -21,7 +21,8 @@ class FragmentCountTokens : BaseFragment<FragmentCountTokensView>(), FragmentCou
         presenter.calculateCountTokens()
     }
 
-    override fun showCountInfo(countTokens: Int) {
-        countTokensText.text = StringBuilder("тех, кто имеет токен: ").append(countTokens)
+    override fun showCountInfo(countAllUsersWithTokens: Int, countActiveUsersWithTokens: Int) {
+        countAllUsersWithTokensText.text = StringBuilder("тех, кто имеет токен: ").append(countAllUsersWithTokens)
+        countActiveUsersWithTokensText.text = StringBuilder("тех, кто имеет токен с активными поездками, но без соц-сетей: ").append(countActiveUsersWithTokens)
     }
 }
