@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
+
 apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-platform-android'
 
 apply plugin: 'kotlin-android-extensions'
 
@@ -31,10 +34,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.0'
-    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.google.firebase:firebase-database:11.8.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
@@ -49,23 +52,28 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     implementation 'com.squareup.okhttp3:okhttp:3.8.0'
-    compile 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:1.0.0'
-    compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.2'
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:1.0.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.2'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.22"
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    compile "org.koin:koin-android:$koin_version"
-    testCompile "org.koin:koin-test:$koin_version"
-    compile "org.koin:koin-android-architecture:0.9.1"
-    compile "org.koin:koin-core:$koin_version"
-    compile 'com.github.salomonbrys.kodein:kodein:4.1.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+    implementation "org.koin:koin-android-architecture:0.9.1"
+    implementation "org.koin:koin-core:$koin_version"
+    implementation 'com.github.salomonbrys.kodein:kodein:4.1.0'
 }
 repositories {
     mavenCentral()
 }
 
 apply plugin: 'com.google.gms.google-services'
+
 kotlin {
     experimental {
         coroutines "enable"
     }
+}
+
+kapt {
+    mapDiagnosticLocations = true
 }
