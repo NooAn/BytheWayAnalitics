@@ -15,8 +15,8 @@ ext {
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.yanevskyy.y.bythewayanalitics"
-//        applicationId "ru.a1024bits.bytheway.release"
+//        applicationId "com.yanevskyy.y.bythewayanalitics"
+        applicationId "ru.a1024bits.bytheway.release"
         minSdkVersion 21
         targetSdkVersion 27
         multiDexEnabled true //important

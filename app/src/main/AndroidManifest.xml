@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".statistic.StatisticActivity"
+            android:name=".mvp.StatisticActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 

@@ -29,6 +29,7 @@ class DbManager(context: Context) : SQLiteOpenHelper(context, "UsersDb.db", null
             val currentTime = System.currentTimeMillis()
             for (user in users) {
                 val contentValues = ContentValues()
+
                 contentValues.put(COLUMN_ITS_DATE, currentTime)
                 contentValues.put(COLUMN_USER_ID, user.id)
                 db.insert(TABLE_NAME, null, contentValues)
