@@ -9,9 +9,12 @@ import java.util.*
 
 class SearchScreenPresenter(usersContainer: UsersContainer) : BasePresenter<FragmentSearchScreenView>(usersContainer) {
 
-    private fun getUsersByName(name: String): User = usersContainer.users.filter {
-        it.name.contains(name, ignoreCase = true) || it.lastName.contains(name, ignoreCase = true)
-    }.first()
+    private fun getUsersByName(name: String): User = usersContainer
+            .users
+            .filter {
+                it.name.contains(name, ignoreCase = true) || it.lastName.contains(name, ignoreCase = true)
+            }
+            .firstOrEmpty()
 
     fun calculateIdByNames(query: String) {
         val user = getUsersByName(query)
@@ -22,6 +25,9 @@ class SearchScreenPresenter(usersContainer: UsersContainer) : BasePresenter<Frag
                 ?: "", user.cities[LAST_INDEX_CITY] ?: "")
     }
 }
+
+private fun List<User>.firstOrEmpty(): User = if (this.isEmpty()) User().apply { name = "Empty" } else this.first()
+
 
 private fun Long?.toDate(): String {
     val format = SimpleDateFormat("dd.MM.yyyy", Locale.US)

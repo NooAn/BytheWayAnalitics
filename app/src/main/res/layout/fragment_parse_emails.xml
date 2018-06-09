@@ -25,7 +25,7 @@
         app:layout_constraintTop_toBottomOf="@+id/bt_getemails" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnShowAllEmails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="24dp"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:text="Count emails:"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/btnShowAllEmails" />
 
     <TextView
         android:id="@+id/count_emails_text"
@@ -48,7 +48,7 @@
         android:padding="24dp"
         android:text="0"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/btnShowAllEmails" />
 
     <TextView
         android:id="@+id/count_requests_text"

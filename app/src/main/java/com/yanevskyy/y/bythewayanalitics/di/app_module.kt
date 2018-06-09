@@ -45,7 +45,7 @@ val presenterModule = applicationContext {
 
 fun createOkHttpClient(): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
-    httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+    httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
     return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
             .readTimeout(5, TimeUnit.SECONDS)

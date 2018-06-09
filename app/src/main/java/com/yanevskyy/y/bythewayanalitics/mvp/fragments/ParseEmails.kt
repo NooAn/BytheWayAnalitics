@@ -16,14 +16,18 @@ import com.yanevskyy.y.bythewayanalitics.R
 import com.yanevskyy.y.bythewayanalitics.TeamTravellers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_parse_emails.*
+import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.experimental.delay
 import kotlinx.coroutines.experimental.launch
-import kotlinx.coroutines.experimental.runBlocking
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.CopyOnWriteArrayList
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
@@ -38,12 +42,24 @@ class ParseEmails : Fragment() {
         view?.findViewById<Button>(R.id.bt_getemails)?.setOnClickListener {
             sendRequest()
         }
-        view?.findViewById<Button>(R.id.button2)?.setOnClickListener {
-            val text = list.toString()
-            writteText(list)
-            saveDataAndSend(text)
+        view?.findViewById<Button>(R.id.btnShowAllEmails)?.setOnClickListener {
+            launch() {
+                async(CommonPool) {
+                    writteText(list)
+                }.await()
+            }
         }
         return view
+    }
+
+    fun createOkHttpClient(): OkHttpClient {
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
+        return OkHttpClient.Builder()
+                .addInterceptor(httpLoggingInterceptor)
+                .readTimeout(15, TimeUnit.SECONDS)
+                .connectTimeout(16, TimeUnit.SECONDS)
+                .build()
     }
 
     private fun saveDataAndSend(text: String) {
@@ -59,7 +75,7 @@ class ParseEmails : Fragment() {
 
     var service: TeamTravellers? = null
     val list: CopyOnWriteArrayList<String> = CopyOnWriteArrayList()
-    val url = "https://www.team2.travel"
+    val url = "https://www.*2.*"
     private fun sendRequest() {
         val retrofit = Retrofit.Builder()
                 .baseUrl(url)
@@ -67,7 +83,8 @@ class ParseEmails : Fragment() {
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder()
                         .setLenient()
                         .create()))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .client(createOkHttpClient())
+               // .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()
 
         service = retrofit.create(TeamTravellers::class.java)
@@ -75,37 +92,36 @@ class ParseEmails : Fragment() {
 
         val countTest = AtomicInteger(0)
 
-
-            List(23000) {
-                //val job =
-                async {
-                    launch(UI) {
-                        count_requests_text.text = it.toString()
-                        Log.d("LOG thread name:", Thread.currentThread().name)
-                    }
-                    val user = getUserId(it)
-                    Log.e("LOG USER $it", user.toString())
-                    if (user.InUser.IsAgent == "0" && user.InUser.is_manager == "0" && user.InUser.is_robot == "0" && user.InUser.is_test == "0") {
-                        list.add(user.InUser.email)
-                        Log.d("LOG add email $it", user.InUser.email)
-                    } else {
-                        countTest.incrementAndGet()
-                    }
-                    launch(UI) {
-                        count_test_users_text.text = countTest.get().toString()
-                        count_emails_text.text = list.size.toString()
-                    }
+        for (it in 10000..24200) {
+            async {
+                launch(UI) {
+                    count_requests_text.text = it.toString()
+                    Log.d("LOG thread name:", Thread.currentThread().name)
                 }
-
-                //job.join()
+                // delay(111, TimeUnit.MILLISECONDS)
+                val user = getUserId(it)
+                Log.e("LOG USER $it", user.toString())
+                if (user.InUser.IsAgent == "0" && user.InUser.is_manager == "0" && user.InUser.is_robot == "0" && user.InUser.is_test == "0") {
+                    list.add(user.InUser.email)
+                    Log.d("LOG add email $it", user.InUser.email)
+                } else {
+                    countTest.incrementAndGet()
+                }
+                launch(UI) {
+                    count_test_users_text.text = countTest.get().toString()
+                    count_emails_text.text = list.size.toString()
+                }
             }
-            Log.d("LOG finnish 2:", Thread.currentThread().name + "s: ${list.size}")
+
+            //job.join()
+        }
+        Log.d("LOG finnish 2:", Thread.currentThread().name + "s: ${list.size}")
 
 
         Log.d("LOG finnish:", Thread.currentThread().name)
     }
 
-    fun writteText(list: List<String>) {
+    suspend fun writteText(list: List<String>) {
         try {
             val filename = "email ${list.size}.txt"
             context?.openFileOutput(filename, Context.MODE_PRIVATE)?.use {
